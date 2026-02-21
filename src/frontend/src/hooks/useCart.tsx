@@ -1,14 +1,14 @@
 import { createContext, useContext, useState, ReactNode } from 'react';
-import type { ServicePackage } from '../backend';
+import type { Service } from '../backend';
 
 interface CartItem {
-  service: ServicePackage;
+  service: Service;
   quantity: number;
 }
 
 interface CartContextType {
   items: CartItem[];
-  addToCart: (service: ServicePackage, quantity: number) => void;
+  addToCart: (service: Service, quantity: number) => void;
   removeFromCart: (serviceId: bigint) => void;
   updateQuantity: (serviceId: bigint, quantity: number) => void;
   clearCart: () => void;
@@ -21,7 +21,7 @@ const CartContext = createContext<CartContextType | undefined>(undefined);
 export function CartProvider({ children }: { children: ReactNode }) {
   const [items, setItems] = useState<CartItem[]>([]);
 
-  const addToCart = (service: ServicePackage, quantity: number) => {
+  const addToCart = (service: Service, quantity: number) => {
     setItems((prevItems) => {
       const existingItem = prevItems.find((item) => item.service.id === service.id);
       if (existingItem) {
@@ -49,7 +49,11 @@ export function CartProvider({ children }: { children: ReactNode }) {
   };
 
   const getTotal = () => {
-    return items.reduce((total, item) => total + Number(item.service.priceDh) * item.quantity, 0);
+    return items.reduce((total, item) => {
+      const unitPrice = Number(item.service.baseUnitPriceDh);
+      const totalPrice = (unitPrice * item.quantity) / 1000; // Price is per 1000 units
+      return total + totalPrice;
+    }, 0);
   };
 
   const getItemCount = () => {

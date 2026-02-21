@@ -19,6 +19,11 @@ export const ServiceType = IDL.Variant({
   'likes' : IDL.Null,
   'followers' : IDL.Null,
 });
+export const UserRole = IDL.Variant({
+  'admin' : IDL.Null,
+  'user' : IDL.Null,
+  'guest' : IDL.Null,
+});
 export const OrderStatus = IDL.Variant({
   'cancelled' : IDL.Null,
   'pending' : IDL.Null,
@@ -26,7 +31,7 @@ export const OrderStatus = IDL.Variant({
 });
 export const CartItem = IDL.Record({
   'quantity' : IDL.Nat,
-  'packageId' : IDL.Nat,
+  'serviceId' : IDL.Nat,
 });
 export const Order = IDL.Record({
   'id' : IDL.Nat,
@@ -36,37 +41,56 @@ export const Order = IDL.Record({
   'cartItems' : IDL.Vec(CartItem),
   'totalAmount' : IDL.Nat,
 });
-export const ServicePackage = IDL.Record({
+export const Testimonial = IDL.Record({
+  'customerName' : IDL.Text,
+  'serviceType' : ServiceType,
+  'testimonialText' : IDL.Text,
+  'rating' : IDL.Nat,
+});
+export const Service = IDL.Record({
   'id' : IDL.Nat,
   'deliveryEstimate' : IDL.Text,
   'serviceType' : ServiceType,
+  'baseUnitPriceDh' : IDL.Nat,
   'description' : IDL.Text,
   'platform' : Platform,
   'available' : IDL.Bool,
-  'priceDh' : IDL.Nat,
-  'quantity' : IDL.Nat,
-  'price' : IDL.Nat,
+  'baseUnitPriceCents' : IDL.Nat,
 });
+export const UserProfile = IDL.Record({ 'name' : IDL.Text });
 
 export const idlService = IDL.Service({
-  'addServicePackage' : IDL.Func(
-      [Platform, ServiceType, IDL.Nat, IDL.Nat, IDL.Nat, IDL.Text, IDL.Text],
+  '_initializeAccessControlWithSecret' : IDL.Func([IDL.Text], [], []),
+  'addService' : IDL.Func(
+      [Platform, ServiceType, IDL.Nat, IDL.Nat, IDL.Text, IDL.Text],
       [IDL.Nat],
       [],
     ),
+  'addTestimonial' : IDL.Func(
+      [IDL.Text, ServiceType, IDL.Text, IDL.Nat],
+      [],
+      [],
+    ),
+  'assignCallerUserRole' : IDL.Func([IDL.Principal, UserRole], [], []),
   'getAllOrders' : IDL.Func([], [IDL.Vec(Order)], ['query']),
-  'getAvailableServices' : IDL.Func([], [IDL.Vec(ServicePackage)], ['query']),
+  'getAllTestimonials' : IDL.Func([], [IDL.Vec(Testimonial)], ['query']),
+  'getAvailableServices' : IDL.Func([], [IDL.Vec(Service)], ['query']),
+  'getCallerUserProfile' : IDL.Func([], [IDL.Opt(UserProfile)], ['query']),
+  'getCallerUserRole' : IDL.Func([], [UserRole], ['query']),
+  'getUserProfile' : IDL.Func(
+      [IDL.Principal],
+      [IDL.Opt(UserProfile)],
+      ['query'],
+    ),
+  'isCallerAdmin' : IDL.Func([], [IDL.Bool], ['query']),
   'placeOrder' : IDL.Func(
       [IDL.Text, IDL.Text, IDL.Vec(CartItem)],
       [IDL.Nat],
       [],
     ),
+  'saveCallerUserProfile' : IDL.Func([UserProfile], [], []),
   'updateOrderStatus' : IDL.Func([IDL.Nat, OrderStatus], [], []),
-  'updateServicePackage' : IDL.Func(
-      [IDL.Nat, IDL.Nat, IDL.Nat, IDL.Bool],
-      [],
-      [],
-    ),
+  'updateService' : IDL.Func([IDL.Nat, IDL.Nat, IDL.Nat, IDL.Bool], [], []),
 });
 
 export const idlInitArgs = [];
@@ -83,12 +107,17 @@ export const idlFactory = ({ IDL }) => {
     'likes' : IDL.Null,
     'followers' : IDL.Null,
   });
+  const UserRole = IDL.Variant({
+    'admin' : IDL.Null,
+    'user' : IDL.Null,
+    'guest' : IDL.Null,
+  });
   const OrderStatus = IDL.Variant({
     'cancelled' : IDL.Null,
     'pending' : IDL.Null,
     'completed' : IDL.Null,
   });
-  const CartItem = IDL.Record({ 'quantity' : IDL.Nat, 'packageId' : IDL.Nat });
+  const CartItem = IDL.Record({ 'quantity' : IDL.Nat, 'serviceId' : IDL.Nat });
   const Order = IDL.Record({
     'id' : IDL.Nat,
     'customerName' : IDL.Text,
@@ -97,37 +126,56 @@ export const idlFactory = ({ IDL }) => {
     'cartItems' : IDL.Vec(CartItem),
     'totalAmount' : IDL.Nat,
   });
-  const ServicePackage = IDL.Record({
+  const Testimonial = IDL.Record({
+    'customerName' : IDL.Text,
+    'serviceType' : ServiceType,
+    'testimonialText' : IDL.Text,
+    'rating' : IDL.Nat,
+  });
+  const Service = IDL.Record({
     'id' : IDL.Nat,
     'deliveryEstimate' : IDL.Text,
     'serviceType' : ServiceType,
+    'baseUnitPriceDh' : IDL.Nat,
     'description' : IDL.Text,
     'platform' : Platform,
     'available' : IDL.Bool,
-    'priceDh' : IDL.Nat,
-    'quantity' : IDL.Nat,
-    'price' : IDL.Nat,
+    'baseUnitPriceCents' : IDL.Nat,
   });
+  const UserProfile = IDL.Record({ 'name' : IDL.Text });
   
   return IDL.Service({
-    'addServicePackage' : IDL.Func(
-        [Platform, ServiceType, IDL.Nat, IDL.Nat, IDL.Nat, IDL.Text, IDL.Text],
+    '_initializeAccessControlWithSecret' : IDL.Func([IDL.Text], [], []),
+    'addService' : IDL.Func(
+        [Platform, ServiceType, IDL.Nat, IDL.Nat, IDL.Text, IDL.Text],
         [IDL.Nat],
         [],
       ),
+    'addTestimonial' : IDL.Func(
+        [IDL.Text, ServiceType, IDL.Text, IDL.Nat],
+        [],
+        [],
+      ),
+    'assignCallerUserRole' : IDL.Func([IDL.Principal, UserRole], [], []),
     'getAllOrders' : IDL.Func([], [IDL.Vec(Order)], ['query']),
-    'getAvailableServices' : IDL.Func([], [IDL.Vec(ServicePackage)], ['query']),
+    'getAllTestimonials' : IDL.Func([], [IDL.Vec(Testimonial)], ['query']),
+    'getAvailableServices' : IDL.Func([], [IDL.Vec(Service)], ['query']),
+    'getCallerUserProfile' : IDL.Func([], [IDL.Opt(UserProfile)], ['query']),
+    'getCallerUserRole' : IDL.Func([], [UserRole], ['query']),
+    'getUserProfile' : IDL.Func(
+        [IDL.Principal],
+        [IDL.Opt(UserProfile)],
+        ['query'],
+      ),
+    'isCallerAdmin' : IDL.Func([], [IDL.Bool], ['query']),
     'placeOrder' : IDL.Func(
         [IDL.Text, IDL.Text, IDL.Vec(CartItem)],
         [IDL.Nat],
         [],
       ),
+    'saveCallerUserProfile' : IDL.Func([UserProfile], [], []),
     'updateOrderStatus' : IDL.Func([IDL.Nat, OrderStatus], [], []),
-    'updateServicePackage' : IDL.Func(
-        [IDL.Nat, IDL.Nat, IDL.Nat, IDL.Bool],
-        [],
-        [],
-      ),
+    'updateService' : IDL.Func([IDL.Nat, IDL.Nat, IDL.Nat, IDL.Bool], [], []),
   });
 };
 

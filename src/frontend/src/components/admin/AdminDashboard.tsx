@@ -2,7 +2,8 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import DashboardOverview from './DashboardOverview';
 import ServiceManagement from './ServiceManagement';
 import OrdersTable from './OrdersTable';
-import { LayoutDashboard, Package, ShoppingCart } from 'lucide-react';
+import TestimonialManagement from './TestimonialManagement';
+import { LayoutDashboard, Package, ShoppingCart, MessageSquare } from 'lucide-react';
 
 export default function AdminDashboard() {
   return (
@@ -15,7 +16,7 @@ export default function AdminDashboard() {
       </div>
 
       <Tabs defaultValue="overview" className="space-y-6">
-        <TabsList className="grid w-full grid-cols-3 lg:w-auto">
+        <TabsList className="grid w-full grid-cols-4 lg:w-auto">
           <TabsTrigger value="overview" className="flex items-center gap-2">
             <LayoutDashboard className="h-4 w-4" />
             <span className="hidden sm:inline">نظرة عامة</span>
@@ -27,6 +28,10 @@ export default function AdminDashboard() {
           <TabsTrigger value="orders" className="flex items-center gap-2">
             <ShoppingCart className="h-4 w-4" />
             <span className="hidden sm:inline">الطلبات</span>
+          </TabsTrigger>
+          <TabsTrigger value="testimonials" className="flex items-center gap-2">
+            <MessageSquare className="h-4 w-4" />
+            <span className="hidden sm:inline">الآراء</span>
           </TabsTrigger>
         </TabsList>
 
@@ -40,6 +45,10 @@ export default function AdminDashboard() {
 
         <TabsContent value="orders" className="space-y-6">
           <OrdersTable />
+        </TabsContent>
+
+        <TabsContent value="testimonials" className="space-y-6">
+          <TestimonialManagement />
         </TabsContent>
       </Tabs>
     </div>

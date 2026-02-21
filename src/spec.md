@@ -1,12 +1,12 @@
 # Specification
 
 ## Summary
-**Goal:** Replace the shopping cart checkout flow with direct WhatsApp contact for service inquiries.
+**Goal:** Update branding from SMM Ourprice to IBAZEX and update contact information.
 
 **Planned changes:**
-- Replace "Add to Cart" buttons on service cards with "Contact on WhatsApp" buttons that open WhatsApp with pre-filled message including service details
-- Remove shopping cart icon and functionality from the header
-- Disable checkout and order success pages/routes
-- Update hero section call-to-action to emphasize browsing services and WhatsApp contact
+- Change site name in header from "SMM Ourprice" to "IBAZEX"
+- Update WhatsApp contact number from +212779-781318 to +212615473531 across all components
+- Update Instagram link to https://www.instagram.com/ibs_syaf?igsh=MWc2bWV3bHppZHF5ZA==
+- Update Facebook link to https://www.facebook.com/mryam.maryam.702036
 
-**User-visible outcome:** Users can browse social media marketing services and click a WhatsApp button on each service card to directly contact the seller (+212779781318) with pre-filled service details, instead of using a shopping cart and checkout flow.
+**User-visible outcome:** Users will see the new IBAZEX branding in the header and updated contact information (WhatsApp number, Instagram, and Facebook links) throughout the site.

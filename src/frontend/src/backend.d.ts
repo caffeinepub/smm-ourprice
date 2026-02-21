@@ -7,16 +7,19 @@ export interface None {
     __kind__: "None";
 }
 export type Option<T> = Some<T> | None;
-export interface ServicePackage {
+export interface Service {
     id: bigint;
     deliveryEstimate: string;
     serviceType: ServiceType;
+    baseUnitPriceDh: bigint;
     description: string;
     platform: Platform;
     available: boolean;
-    priceDh: bigint;
+    baseUnitPriceCents: bigint;
+}
+export interface CartItem {
     quantity: bigint;
-    price: bigint;
+    serviceId: bigint;
 }
 export interface Order {
     id: bigint;
@@ -26,9 +29,14 @@ export interface Order {
     cartItems: Array<CartItem>;
     totalAmount: bigint;
 }
-export interface CartItem {
-    quantity: bigint;
-    packageId: bigint;
+export interface UserProfile {
+    name: string;
+}
+export interface Testimonial {
+    customerName: string;
+    serviceType: ServiceType;
+    testimonialText: string;
+    rating: bigint;
 }
 export enum OrderStatus {
     cancelled = "cancelled",
@@ -46,11 +54,24 @@ export enum ServiceType {
     likes = "likes",
     followers = "followers"
 }
+export enum UserRole {
+    admin = "admin",
+    user = "user",
+    guest = "guest"
+}
 export interface backendInterface {
-    addServicePackage(platform: Platform, serviceType: ServiceType, quantity: bigint, price: bigint, priceDh: bigint, deliveryEstimate: string, description: string): Promise<bigint>;
+    addService(platform: Platform, serviceType: ServiceType, baseUnitPriceCents: bigint, baseUnitPriceDh: bigint, deliveryEstimate: string, description: string): Promise<bigint>;
+    addTestimonial(customerName: string, serviceType: ServiceType, testimonialText: string, rating: bigint): Promise<void>;
+    assignCallerUserRole(user: Principal, role: UserRole): Promise<void>;
     getAllOrders(): Promise<Array<Order>>;
-    getAvailableServices(): Promise<Array<ServicePackage>>;
+    getAllTestimonials(): Promise<Array<Testimonial>>;
+    getAvailableServices(): Promise<Array<Service>>;
+    getCallerUserProfile(): Promise<UserProfile | null>;
+    getCallerUserRole(): Promise<UserRole>;
+    getUserProfile(user: Principal): Promise<UserProfile | null>;
+    isCallerAdmin(): Promise<boolean>;
     placeOrder(customerName: string, contactInfo: string, cartItems: Array<CartItem>): Promise<bigint>;
+    saveCallerUserProfile(profile: UserProfile): Promise<void>;
     updateOrderStatus(orderId: bigint, status: OrderStatus): Promise<void>;
-    updateServicePackage(id: bigint, price: bigint, priceDh: bigint, available: boolean): Promise<void>;
+    updateService(id: bigint, baseUnitPriceCents: bigint, baseUnitPriceDh: bigint, available: boolean): Promise<void>;
 }

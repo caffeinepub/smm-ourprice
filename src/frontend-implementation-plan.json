@@ -1,75 +1,85 @@
 {
   "kind": "implementation_plan",
   "version": "1.0",
-  "title": "Redirect service package selection to WhatsApp for direct seller contact",
+  "title": "Update branding from SMM Ourprice to IBAZEX in header",
   "requirements": [
     {
-      "id": "REQ-35",
-      "summary": "Replace 'Add to Cart' button with WhatsApp contact button in ServiceCard component",
+      "id": "REQ-54",
+      "summary": "Update the site name text in the Header component from 'SMM Ourprice' to 'IBAZEX'",
       "acceptanceCriteria": [
-        "Each service card displays a WhatsApp contact button instead of 'Add to Cart' button",
-        "Button text is in Arabic: 'تواصل عبر الواتساب'",
-        "Clicking the button opens WhatsApp with pre-filled message containing service details",
-        "WhatsApp number is +212779781318 (from footer contact information)",
-        "Pre-filled message includes: platform name, service type, quantity, and price in Dirhams"
-      ],
-      "file_operations": [
-        {
-          "path": "frontend/src/components/ServiceCard.tsx",
-          "operation": "modify",
-          "description": "Replace the 'Add to Cart' button and quantity selector with a 'تواصل عبر الواتساب' button. Remove cart-related functionality including the addToCart handler and quantity state. Implement WhatsApp link generation that constructs a pre-filled message including platform name (in Arabic), service type (in Arabic), quantity, and price in Dirhams. The WhatsApp URL should follow the format: https://wa.me/212779781318?text=<encoded-message>. Remove dependency on useCart hook. Maintain all existing Arabic localization and RTL layout."
-        },
-        {
-          "path": "frontend/src/utils/whatsapp.ts",
-          "operation": "create",
-          "description": "Create a utility module for WhatsApp URL generation. Export a function that accepts ServicePackage data and returns a formatted WhatsApp URL with pre-filled message. The message should include platform name, service type, quantity, and price in Dirhams, all formatted in Arabic. Ensure proper URL encoding of the message text. Include Arabic translations for platform names (Facebook, Instagram, TikTok, YouTube) and service types (followers, likes, views)."
-        }
-      ]
-    },
-    {
-      "id": "REQ-36",
-      "summary": "Remove shopping cart functionality from Header component",
-      "acceptanceCriteria": [
-        "Shopping cart icon and badge are removed from the Header",
-        "Cart drawer/sheet is no longer accessible",
-        "Navigation remains functional with Home, Services, and Admin links"
+        "The header logo text reads 'IBAZEX' instead of 'SMM Ourprice'",
+        "The change is applied to the specific span element at the provided XPath",
+        "Visual styling and positioning remain consistent with the existing design"
       ],
       "file_operations": [
         {
           "path": "frontend/src/components/Header.tsx",
           "operation": "modify",
-          "description": "Remove the shopping cart button including the ShoppingCart icon and item count badge. Remove the cartOpen state and setCartOpen handler. Remove the Cart component import and the Cart Sheet component from the JSX. Keep all navigation links (Home, Services, Admin) functional. Maintain the existing sticky header styling and Arabic RTL layout."
+          "description": "Update the site name text from 'SMM Ourprice' to 'IBAZEX' in the header logo span element. Locate the text content within the logo link structure and replace it while preserving all existing styling, RTL layout, and Arabic language support."
         }
       ]
     },
     {
-      "id": "REQ-37",
-      "summary": "Remove checkout flow including CheckoutPage and OrderSuccess routes",
+      "id": "REQ-55",
+      "summary": "Update WhatsApp contact number from +212779-781318 to +212615473531 across all components",
       "acceptanceCriteria": [
-        "Checkout route is removed or redirects to services page",
-        "Order success route is removed or redirects to services page",
-        "Users cannot access checkout flow through any navigation path"
+        "All WhatsApp contact buttons use the phone number +212615473531",
+        "The WhatsApp URL generation in whatsapp.ts uses the new phone number",
+        "Footer displays the updated contact number",
+        "Hero component shows the updated WhatsApp contact information"
       ],
       "file_operations": [
         {
-          "path": "frontend/src/App.tsx",
+          "path": "frontend/src/utils/whatsapp.ts",
           "operation": "modify",
-          "description": "Remove the checkout route definition and the order-success route definition from the router configuration. Remove imports for CheckoutPage and OrderSuccess components. The routes for '/checkout' and '/order-success' should no longer be accessible. Keep all other routes (home, services, admin) functional. Maintain the existing ThemeProvider, CartProvider wrapper, and Toaster configuration."
-        }
-      ]
-    },
-    {
-      "id": "REQ-38",
-      "summary": "Update Hero component to emphasize WhatsApp contact method",
-      "acceptanceCriteria": [
-        "Hero CTA button text remains 'تصفح الخدمات' and navigates to services page",
-        "Optional: Add supporting text indicating users can contact via WhatsApp for orders"
-      ],
-      "file_operations": [
+          "description": "Update the WhatsApp phone number constant from +212779-781318 to +212615473531 in the URL generation function to ensure all WhatsApp links throughout the application use the new contact number."
+        },
         {
           "path": "frontend/src/components/Hero.tsx",
           "operation": "modify",
-          "description": "Keep the existing 'تصفح الخدمات' CTA button and its navigation to the services page. Optionally add a subtitle or supporting text near the CTA that informs users they can contact via WhatsApp to place orders (in Arabic). Maintain the full-screen background image, animated logo, heading, tagline, and feature cards. Preserve all existing Arabic localization and styling."
+          "description": "Update any hardcoded WhatsApp contact number references from +212779-781318 to +212615473531 in the Hero component's contact information display section."
+        },
+        {
+          "path": "frontend/src/components/Footer.tsx",
+          "operation": "modify",
+          "description": "Update the WhatsApp contact number display from +212779-781318 to +212615473531 in the Footer component's contact information section while preserving the existing styling and layout."
+        },
+        {
+          "path": "frontend/src/components/ServiceCard.tsx",
+          "operation": "modify",
+          "description": "Verify that the ServiceCard component uses the whatsapp.ts utility function for generating WhatsApp contact buttons. Ensure no hardcoded phone numbers exist. If any hardcoded references to +212779-781318 are found, update them to +212615473531."
+        }
+      ]
+    },
+    {
+      "id": "REQ-56",
+      "summary": "Update Instagram social media link in the Footer component to the new profile URL",
+      "acceptanceCriteria": [
+        "Footer Instagram icon links to https://www.instagram.com/ibs_syaf?igsh=MWc2bWV3bHppZHF5ZA==",
+        "Link opens correctly in a new tab",
+        "Icon and styling remain unchanged"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/Footer.tsx",
+          "operation": "modify",
+          "description": "Update the Instagram social media link href attribute from https://www.instagram.com/smm__ourprice?igsh=MWJ0MWZwZ2VoZzRhYg== to https://www.instagram.com/ibs_syaf?igsh=MWc2bWV3bHppZHF5ZA== while preserving the target='_blank' attribute, icon, and styling."
+        }
+      ]
+    },
+    {
+      "id": "REQ-57",
+      "summary": "Update Facebook social media link in the Footer component to the new profile URL",
+      "acceptanceCriteria": [
+        "Footer Facebook icon links to https://www.facebook.com/mryam.maryam.702036",
+        "Link opens correctly in a new tab",
+        "Icon and styling remain unchanged"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/Footer.tsx",
+          "operation": "modify",
+          "description": "Update the Facebook social media link href attribute from https://www.facebook.com/share/14SkZkmPmwb/ to https://www.facebook.com/mryam.maryam.702036 while preserving the target='_blank' attribute, icon, and styling."
         }
       ]
     }

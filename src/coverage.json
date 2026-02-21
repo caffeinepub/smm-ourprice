@@ -1,7 +1,7 @@
 {
   "kind": "coverage_report",
   "version": "1.0",
-  "generatedAt": "2026-02-21T12:21:11.578Z",
+  "generatedAt": "2026-02-21T23:43:58.847Z",
   "sources": {
     "buildRequest": true,
     "implementationPlan": true
@@ -11,21 +11,8 @@
     "implemented": 4,
     "items": [
       {
-        "id": "REQ-35",
-        "summary": "Replace the 'Add to Cart' button on ServiceCard component with a 'Contact on WhatsApp' button that redirects users to WhatsApp with a pre-filled message including the service details (platform, service type, quantity, price)",
-        "status": "implemented",
-        "plannedFiles": [
-          "frontend/src/components/ServiceCard.tsx",
-          "frontend/src/utils/whatsapp.ts"
-        ],
-        "matchedFiles": [
-          "frontend/src/components/ServiceCard.tsx",
-          "frontend/src/utils/whatsapp.ts"
-        ]
-      },
-      {
-        "id": "REQ-36",
-        "summary": "Remove or hide the shopping cart functionality from the Header component since users will contact via WhatsApp instead of using the cart",
+        "id": "REQ-54",
+        "summary": "Update the site name text displayed in the header logo from 'SMM Ourprice' to 'IBAZEX' in the Header component at XPath /html[1]/body[1]/div[1]/div[1]/header[1]/div[1]/a[1]/span[1]/span[2]",
         "status": "implemented",
         "plannedFiles": [
           "frontend/src/components/Header.tsx"
@@ -35,25 +22,41 @@
         ]
       },
       {
-        "id": "REQ-37",
-        "summary": "Remove or disable the checkout flow including CheckoutPage and OrderSuccess components since orders will be handled through WhatsApp communication",
+        "id": "REQ-55",
+        "summary": "Update the WhatsApp contact number throughout the application from +212779-781318 to +212615473531, including all WhatsApp contact buttons in ServiceCard component, Hero component, Footer component, and whatsapp.ts utility function",
         "status": "implemented",
         "plannedFiles": [
-          "frontend/src/App.tsx"
+          "frontend/src/utils/whatsapp.ts",
+          "frontend/src/components/Hero.tsx",
+          "frontend/src/components/Footer.tsx",
+          "frontend/src/components/ServiceCard.tsx"
         ],
         "matchedFiles": [
-          "frontend/src/App.tsx"
+          "frontend/src/utils/whatsapp.ts",
+          "frontend/src/components/Hero.tsx",
+          "frontend/src/components/Footer.tsx"
         ]
       },
       {
-        "id": "REQ-38",
-        "summary": "Update the Hero component call-to-action to emphasize browsing services and contacting via WhatsApp rather than purchasing through the website",
+        "id": "REQ-56",
+        "summary": "Update the Instagram social media link in the Footer component from https://www.instagram.com/smm__ourprice?igsh=MWJ0MWZwZ2VoZzRhYg== to https://www.instagram.com/ibs_syaf?igsh=MWc2bWV3bHppZHF5ZA==",
         "status": "implemented",
         "plannedFiles": [
-          "frontend/src/components/Hero.tsx"
+          "frontend/src/components/Footer.tsx"
         ],
         "matchedFiles": [
-          "frontend/src/components/Hero.tsx"
+          "frontend/src/components/Footer.tsx"
+        ]
+      },
+      {
+        "id": "REQ-57",
+        "summary": "Update the Facebook social media link in the Footer component from https://www.facebook.com/share/14SkZkmPmwb/ to https://www.facebook.com/mryam.maryam.702036",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/components/Footer.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/components/Footer.tsx"
         ]
       }
     ]
@@ -63,13 +66,9 @@
     "feature_evidence.json",
     "frontend-file-summaries.txt",
     "frontend-implementation-plan.json",
-    "frontend/src/App.tsx",
-    "frontend/src/components/Cart.tsx",
-    "frontend/src/components/CheckoutPage.tsx",
+    "frontend/src/components/Footer.tsx",
     "frontend/src/components/Header.tsx",
     "frontend/src/components/Hero.tsx",
-    "frontend/src/components/OrderSuccess.tsx",
-    "frontend/src/components/ServiceCard.tsx",
     "frontend/src/utils/whatsapp.ts",
     "project_state.json",
     "scratch/component-selection.json",

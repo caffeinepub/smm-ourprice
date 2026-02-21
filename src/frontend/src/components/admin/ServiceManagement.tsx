@@ -9,7 +9,7 @@ import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, D
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { Switch } from '@/components/ui/switch';
 import { Badge } from '@/components/ui/badge';
-import { useGetAvailableServices, useAddServicePackage, useUpdateServicePackage } from '../../hooks/useQueries';
+import { useGetAvailableServices, useAddService, useUpdateService } from '../../hooks/useQueries';
 import { Platform, ServiceType } from '../../backend';
 import { Plus, Loader2 } from 'lucide-react';
 import { toast } from 'sonner';
@@ -17,15 +17,14 @@ import { Skeleton } from '@/components/ui/skeleton';
 
 export default function ServiceManagement() {
   const { data: services, isLoading } = useGetAvailableServices();
-  const addServiceMutation = useAddServicePackage();
-  const updateServiceMutation = useUpdateServicePackage();
+  const addServiceMutation = useAddService();
+  const updateServiceMutation = useUpdateService();
 
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [formData, setFormData] = useState({
     platform: Platform.facebook,
     serviceType: ServiceType.followers,
-    quantity: '',
-    priceDh: '',
+    baseUnitPriceDh: '',
     deliveryEstimate: '',
     description: '',
   });
@@ -34,41 +33,39 @@ export default function ServiceManagement() {
     e.preventDefault();
 
     try {
-      const priceDhValue = BigInt(formData.priceDh);
+      const priceDhValue = BigInt(formData.baseUnitPriceDh);
       const priceInCents = priceDhValue * BigInt(100); // Convert to cents for backend compatibility
 
       await addServiceMutation.mutateAsync({
         platform: formData.platform,
         serviceType: formData.serviceType,
-        quantity: BigInt(formData.quantity),
-        price: priceInCents,
-        priceDh: priceDhValue,
+        baseUnitPriceCents: priceInCents,
+        baseUnitPriceDh: priceDhValue,
         deliveryEstimate: formData.deliveryEstimate,
         description: formData.description,
       });
 
-      toast.success('تمت إضافة باقة الخدمة بنجاح');
+      toast.success('تمت إضافة الخدمة بنجاح');
       setIsDialogOpen(false);
       setFormData({
         platform: Platform.facebook,
         serviceType: ServiceType.followers,
-        quantity: '',
-        priceDh: '',
+        baseUnitPriceDh: '',
         deliveryEstimate: '',
         description: '',
       });
     } catch (error) {
-      toast.error('فشل في إضافة باقة الخدمة');
+      toast.error('فشل في إضافة الخدمة');
       console.error(error);
     }
   };
 
-  const handleToggleAvailability = async (id: bigint, price: bigint, priceDh: bigint, currentAvailable: boolean) => {
+  const handleToggleAvailability = async (id: bigint, baseUnitPriceCents: bigint, baseUnitPriceDh: bigint, currentAvailable: boolean) => {
     try {
       await updateServiceMutation.mutateAsync({
         id,
-        price,
-        priceDh,
+        baseUnitPriceCents,
+        baseUnitPriceDh,
         available: !currentAvailable,
       });
       toast.success(`تم ${!currentAvailable ? 'تفعيل' : 'تعطيل'} الخدمة`);
@@ -96,8 +93,8 @@ export default function ServiceManagement() {
       <CardHeader>
         <div className="flex items-center justify-between">
           <div>
-            <CardTitle>باقات الخدمات</CardTitle>
-            <CardDescription>إدارة عروض الخدمات الخاصة بك</CardDescription>
+            <CardTitle>الخدمات المتاحة</CardTitle>
+            <CardDescription>إدارة خدمات وسائل التواصل الاجتماعي</CardDescription>
           </div>
           <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
             <DialogTrigger asChild>
@@ -108,8 +105,8 @@ export default function ServiceManagement() {
             </DialogTrigger>
             <DialogContent className="max-w-2xl">
               <DialogHeader>
-                <DialogTitle>إضافة باقة خدمة جديدة</DialogTitle>
-                <DialogDescription>إنشاء باقة خدمة جديدة للعملاء لشرائها</DialogDescription>
+                <DialogTitle>إضافة خدمة جديدة</DialogTitle>
+                <DialogDescription>إنشاء خدمة جديدة مع تسعير مرن حسب الكمية</DialogDescription>
               </DialogHeader>
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div className="grid grid-cols-2 gap-4">
@@ -149,30 +146,19 @@ export default function ServiceManagement() {
                   </div>
                 </div>
 
-                <div className="grid grid-cols-2 gap-4">
-                  <div className="space-y-2">
-                    <Label htmlFor="quantity">الكمية</Label>
-                    <Input
-                      id="quantity"
-                      type="number"
-                      placeholder="1000"
-                      value={formData.quantity}
-                      onChange={(e) => setFormData({ ...formData, quantity: e.target.value })}
-                      required
-                    />
-                  </div>
-
-                  <div className="space-y-2">
-                    <Label htmlFor="priceDh">السعر (درهم)</Label>
-                    <Input
-                      id="priceDh"
-                      type="number"
-                      placeholder="25"
-                      value={formData.priceDh}
-                      onChange={(e) => setFormData({ ...formData, priceDh: e.target.value })}
-                      required
-                    />
-                  </div>
+                <div className="space-y-2">
+                  <Label htmlFor="baseUnitPriceDh">سعر الوحدة (درهم لكل 1000)</Label>
+                  <Input
+                    id="baseUnitPriceDh"
+                    type="number"
+                    placeholder="25"
+                    value={formData.baseUnitPriceDh}
+                    onChange={(e) => setFormData({ ...formData, baseUnitPriceDh: e.target.value })}
+                    required
+                  />
+                  <p className="text-xs text-muted-foreground">
+                    السعر لكل 1000 وحدة (متابع/إعجاب/مشاهدة)
+                  </p>
                 </div>
 
                 <div className="space-y-2">
@@ -190,7 +176,7 @@ export default function ServiceManagement() {
                   <Label htmlFor="description">الوصف</Label>
                   <Textarea
                     id="description"
-                    placeholder="متابعون عالي الجودة من حسابات حقيقية..."
+                    placeholder="خدمة عالية الجودة من حسابات حقيقية ونشطة..."
                     value={formData.description}
                     onChange={(e) => setFormData({ ...formData, description: e.target.value })}
                     required
@@ -229,8 +215,7 @@ export default function ServiceManagement() {
               <TableRow>
                 <TableHead>المنصة</TableHead>
                 <TableHead>النوع</TableHead>
-                <TableHead>الكمية</TableHead>
-                <TableHead>السعر</TableHead>
+                <TableHead>سعر الوحدة</TableHead>
                 <TableHead>التسليم</TableHead>
                 <TableHead>الحالة</TableHead>
                 <TableHead>متاح</TableHead>
@@ -242,8 +227,12 @@ export default function ServiceManagement() {
                   <TableRow key={Number(service.id)}>
                     <TableCell className="font-medium capitalize">{service.platform}</TableCell>
                     <TableCell className="capitalize">{service.serviceType}</TableCell>
-                    <TableCell>{Number(service.quantity).toLocaleString()}</TableCell>
-                    <TableCell>{Number(service.priceDh)} درهم</TableCell>
+                    <TableCell>
+                      <div>
+                        <div className="font-semibold">{Number(service.baseUnitPriceDh)} درهم</div>
+                        <div className="text-xs text-muted-foreground">لكل 1000</div>
+                      </div>
+                    </TableCell>
                     <TableCell>{service.deliveryEstimate}</TableCell>
                     <TableCell>
                       <Badge variant={service.available ? 'default' : 'secondary'} className={service.available ? 'bg-cyan-500 hover:bg-cyan-600' : ''}>
@@ -253,7 +242,7 @@ export default function ServiceManagement() {
                     <TableCell>
                       <Switch
                         checked={service.available}
-                        onCheckedChange={() => handleToggleAvailability(service.id, service.price, service.priceDh, service.available)}
+                        onCheckedChange={() => handleToggleAvailability(service.id, service.baseUnitPriceCents, service.baseUnitPriceDh, service.available)}
                         disabled={updateServiceMutation.isPending}
                       />
                     </TableCell>
@@ -261,8 +250,8 @@ export default function ServiceManagement() {
                 ))
               ) : (
                 <TableRow>
-                  <TableCell colSpan={7} className="text-center text-muted-foreground">
-                    لا توجد خدمات متاحة. أضف باقة الخدمة الأولى.
+                  <TableCell colSpan={6} className="text-center text-muted-foreground">
+                    لا توجد خدمات متاحة. أضف الخدمة الأولى.
                   </TableCell>
                 </TableRow>
               )}

@@ -1,11 +1,11 @@
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { useActor } from './useActor';
-import type { ServicePackage, Order, CartItem, Platform, ServiceType, OrderStatus } from '../backend';
+import type { Service, Order, CartItem, Platform, ServiceType, OrderStatus, Testimonial } from '../backend';
 
 export function useGetAvailableServices() {
   const { actor, isFetching } = useActor();
 
-  return useQuery<ServicePackage[]>({
+  return useQuery<Service[]>({
     queryKey: ['services'],
     queryFn: async () => {
       if (!actor) return [];
@@ -25,6 +25,21 @@ export function useGetAllOrders() {
       return actor.getAllOrders();
     },
     enabled: !!actor && !isFetching,
+  });
+}
+
+export function useGetAllTestimonials() {
+  const { actor, isFetching } = useActor();
+
+  return useQuery<Testimonial[]>({
+    queryKey: ['testimonials'],
+    queryFn: async () => {
+      if (!actor) return [];
+      return actor.getAllTestimonials();
+    },
+    enabled: !!actor && !isFetching,
+    refetchOnMount: true,
+    refetchOnWindowFocus: true,
   });
 }
 
@@ -51,7 +66,7 @@ export function usePlaceOrder() {
   });
 }
 
-export function useAddServicePackage() {
+export function useAddService() {
   const { actor } = useActor();
   const queryClient = useQueryClient();
 
@@ -59,22 +74,20 @@ export function useAddServicePackage() {
     mutationFn: async ({
       platform,
       serviceType,
-      quantity,
-      price,
-      priceDh,
+      baseUnitPriceCents,
+      baseUnitPriceDh,
       deliveryEstimate,
       description,
     }: {
       platform: Platform;
       serviceType: ServiceType;
-      quantity: bigint;
-      price: bigint;
-      priceDh: bigint;
+      baseUnitPriceCents: bigint;
+      baseUnitPriceDh: bigint;
       deliveryEstimate: string;
       description: string;
     }) => {
       if (!actor) throw new Error('Actor not initialized');
-      return actor.addServicePackage(platform, serviceType, quantity, price, priceDh, deliveryEstimate, description);
+      return actor.addService(platform, serviceType, baseUnitPriceCents, baseUnitPriceDh, deliveryEstimate, description);
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['services'] });
@@ -82,14 +95,14 @@ export function useAddServicePackage() {
   });
 }
 
-export function useUpdateServicePackage() {
+export function useUpdateService() {
   const { actor } = useActor();
   const queryClient = useQueryClient();
 
   return useMutation({
-    mutationFn: async ({ id, price, priceDh, available }: { id: bigint; price: bigint; priceDh: bigint; available: boolean }) => {
+    mutationFn: async ({ id, baseUnitPriceCents, baseUnitPriceDh, available }: { id: bigint; baseUnitPriceCents: bigint; baseUnitPriceDh: bigint; available: boolean }) => {
       if (!actor) throw new Error('Actor not initialized');
-      return actor.updateServicePackage(id, price, priceDh, available);
+      return actor.updateService(id, baseUnitPriceCents, baseUnitPriceDh, available);
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['services'] });
@@ -108,6 +121,31 @@ export function useUpdateOrderStatus() {
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['orders'] });
+    },
+  });
+}
+
+export function useAddTestimonial() {
+  const { actor } = useActor();
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: async ({
+      customerName,
+      serviceType,
+      testimonialText,
+      rating,
+    }: {
+      customerName: string;
+      serviceType: ServiceType;
+      testimonialText: string;
+      rating: bigint;
+    }) => {
+      if (!actor) throw new Error('Actor not initialized');
+      return actor.addTestimonial(customerName, serviceType, testimonialText, rating);
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['testimonials'] });
     },
   });
 }

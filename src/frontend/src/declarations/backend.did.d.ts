@@ -10,7 +10,7 @@ import type { ActorMethod } from '@icp-sdk/core/agent';
 import type { IDL } from '@icp-sdk/core/candid';
 import type { Principal } from '@icp-sdk/core/principal';
 
-export interface CartItem { 'quantity' : bigint, 'packageId' : bigint }
+export interface CartItem { 'quantity' : bigint, 'serviceId' : bigint }
 export interface Order {
   'id' : bigint,
   'customerName' : string,
@@ -26,33 +26,51 @@ export type Platform = { 'tiktok' : null } |
   { 'instagram' : null } |
   { 'facebook' : null } |
   { 'youtube' : null };
-export interface ServicePackage {
+export interface Service {
   'id' : bigint,
   'deliveryEstimate' : string,
   'serviceType' : ServiceType,
+  'baseUnitPriceDh' : bigint,
   'description' : string,
   'platform' : Platform,
   'available' : boolean,
-  'priceDh' : bigint,
-  'quantity' : bigint,
-  'price' : bigint,
+  'baseUnitPriceCents' : bigint,
 }
 export type ServiceType = { 'views' : null } |
   { 'likes' : null } |
   { 'followers' : null };
+export interface Testimonial {
+  'customerName' : string,
+  'serviceType' : ServiceType,
+  'testimonialText' : string,
+  'rating' : bigint,
+}
+export interface UserProfile { 'name' : string }
+export type UserRole = { 'admin' : null } |
+  { 'user' : null } |
+  { 'guest' : null };
 export interface _SERVICE {
-  'addServicePackage' : ActorMethod<
-    [Platform, ServiceType, bigint, bigint, bigint, string, string],
+  '_initializeAccessControlWithSecret' : ActorMethod<[string], undefined>,
+  'addService' : ActorMethod<
+    [Platform, ServiceType, bigint, bigint, string, string],
     bigint
   >,
-  'getAllOrders' : ActorMethod<[], Array<Order>>,
-  'getAvailableServices' : ActorMethod<[], Array<ServicePackage>>,
-  'placeOrder' : ActorMethod<[string, string, Array<CartItem>], bigint>,
-  'updateOrderStatus' : ActorMethod<[bigint, OrderStatus], undefined>,
-  'updateServicePackage' : ActorMethod<
-    [bigint, bigint, bigint, boolean],
+  'addTestimonial' : ActorMethod<
+    [string, ServiceType, string, bigint],
     undefined
   >,
+  'assignCallerUserRole' : ActorMethod<[Principal, UserRole], undefined>,
+  'getAllOrders' : ActorMethod<[], Array<Order>>,
+  'getAllTestimonials' : ActorMethod<[], Array<Testimonial>>,
+  'getAvailableServices' : ActorMethod<[], Array<Service>>,
+  'getCallerUserProfile' : ActorMethod<[], [] | [UserProfile]>,
+  'getCallerUserRole' : ActorMethod<[], UserRole>,
+  'getUserProfile' : ActorMethod<[Principal], [] | [UserProfile]>,
+  'isCallerAdmin' : ActorMethod<[], boolean>,
+  'placeOrder' : ActorMethod<[string, string, Array<CartItem>], bigint>,
+  'saveCallerUserProfile' : ActorMethod<[UserProfile], undefined>,
+  'updateOrderStatus' : ActorMethod<[bigint, OrderStatus], undefined>,
+  'updateService' : ActorMethod<[bigint, bigint, bigint, boolean], undefined>,
 }
 export declare const idlService: IDL.ServiceClass;
 export declare const idlInitArgs: IDL.Type[];

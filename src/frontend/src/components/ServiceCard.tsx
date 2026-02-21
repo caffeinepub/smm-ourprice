@@ -6,7 +6,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Users, ThumbsUp, Eye, Clock } from 'lucide-react';
 import { SiFacebook, SiInstagram, SiX, SiYoutube, SiTiktok, SiWhatsapp } from 'react-icons/si';
-import type { ServicePackage } from '../backend';
+import type { Service } from '../backend';
 import { generateWhatsAppUrl } from '../utils/whatsapp';
 
 const platformIcons = {
@@ -30,20 +30,29 @@ const serviceTypeLabels = {
 };
 
 interface ServiceCardProps {
-  service: ServicePackage;
+  service: Service;
 }
 
 export default function ServiceCard({ service }: ServiceCardProps) {
-  const [quantity, setQuantity] = useState(1);
+  const MIN_QUANTITY = 100;
+  const MAX_QUANTITY = 1000000;
+  const [quantity, setQuantity] = useState(1000);
 
   const PlatformIcon = platformIcons[service.platform];
   const ServiceIcon = serviceTypeIcons[service.serviceType];
   const serviceLabel = serviceTypeLabels[service.serviceType];
 
-  const totalPrice = Number(service.priceDh) * quantity;
+  const unitPrice = Number(service.baseUnitPriceDh);
+  const totalPrice = (unitPrice * quantity) / 1000; // Price is per 1000 units
+
+  const handleQuantityChange = (value: string) => {
+    const numValue = parseInt(value) || MIN_QUANTITY;
+    const clampedValue = Math.max(MIN_QUANTITY, Math.min(MAX_QUANTITY, numValue));
+    setQuantity(clampedValue);
+  };
 
   const handleWhatsAppContact = () => {
-    const whatsappUrl = generateWhatsAppUrl(service, quantity);
+    const whatsappUrl = generateWhatsAppUrl(service, quantity, totalPrice);
     window.open(whatsappUrl, '_blank');
   };
 
@@ -64,7 +73,7 @@ export default function ServiceCard({ service }: ServiceCardProps) {
           </div>
         </div>
         <CardTitle className="text-2xl font-bold">
-          {Number(service.quantity).toLocaleString()} {serviceLabel}
+          {serviceLabel}
         </CardTitle>
         <CardDescription className="line-clamp-2">{service.description}</CardDescription>
       </CardHeader>
@@ -77,30 +86,37 @@ export default function ServiceCard({ service }: ServiceCardProps) {
           </div>
           <div className="text-left">
             <div className="text-2xl font-bold text-cyan-500">
-              {Number(service.priceDh)} درهم
+              {unitPrice} درهم
             </div>
-            <div className="text-xs text-muted-foreground">لكل باقة</div>
+            <div className="text-xs text-muted-foreground">لكل 1000 {serviceLabel}</div>
           </div>
         </div>
 
         <div className="space-y-2">
-          <Label htmlFor={`quantity-${service.id}`}>الكمية</Label>
+          <Label htmlFor={`quantity-${service.id}`}>الكمية المرغوبة</Label>
           <Input
             id={`quantity-${service.id}`}
             type="number"
-            min="1"
+            min={MIN_QUANTITY}
+            max={MAX_QUANTITY}
+            step="100"
             value={quantity}
-            onChange={(e) => setQuantity(Math.max(1, parseInt(e.target.value) || 1))}
+            onChange={(e) => handleQuantityChange(e.target.value)}
             className="border-border/50"
+            placeholder={`أدخل الكمية (${MIN_QUANTITY.toLocaleString()} - ${MAX_QUANTITY.toLocaleString()})`}
           />
+          <p className="text-xs text-muted-foreground">
+            الحد الأدنى: {MIN_QUANTITY.toLocaleString()} | الحد الأقصى: {MAX_QUANTITY.toLocaleString()}
+          </p>
         </div>
 
-        {quantity > 1 && (
-          <div className="rounded-lg bg-muted/50 p-3 text-center">
-            <div className="text-sm text-muted-foreground">المجموع</div>
-            <div className="text-xl font-bold text-cyan-500">{totalPrice} درهم</div>
+        <div className="rounded-lg bg-gradient-to-br from-cyan-500/10 to-cyan-600/10 p-4 text-center border border-cyan-500/20">
+          <div className="text-sm text-muted-foreground mb-1">المجموع الكلي</div>
+          <div className="text-3xl font-bold text-cyan-500">{totalPrice.toFixed(2)} درهم</div>
+          <div className="text-xs text-muted-foreground mt-1">
+            {quantity.toLocaleString()} {serviceLabel}
           </div>
-        )}
+        </div>
       </CardContent>
 
       <CardFooter>

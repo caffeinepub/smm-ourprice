@@ -1,4 +1,4 @@
-import type { ServicePackage } from '../backend';
+import type { Service } from '../backend';
 
 // Platform names in Arabic
 const platformNames: Record<string, string> = {
@@ -17,26 +17,24 @@ const serviceTypeNames: Record<string, string> = {
 };
 
 /**
- * Generates a WhatsApp URL with pre-filled message for a service package
- * @param service - The service package details
- * @param quantity - The quantity of packages to order
+ * Generates a WhatsApp URL with pre-filled message for a service with custom quantity
+ * @param service - The service details
+ * @param quantity - The custom quantity requested by the user
+ * @param totalPrice - The calculated total price
  * @returns WhatsApp URL with encoded message
  */
-export function generateWhatsAppUrl(service: ServicePackage, quantity: number = 1): string {
-  const whatsappNumber = '212779781318';
+export function generateWhatsAppUrl(service: Service, quantity: number, totalPrice: number): string {
+  const whatsappNumber = '212615473531';
   
   const platformName = platformNames[service.platform] || service.platform;
   const serviceTypeName = serviceTypeNames[service.serviceType] || service.serviceType;
-  const packageQuantity = Number(service.quantity).toLocaleString();
-  const pricePerPackage = Number(service.priceDh);
-  const totalPrice = pricePerPackage * quantity;
   
   const message = `مرحباً! أرغب في طلب الخدمة التالية:
 
 📱 المنصة: ${platformName}
 📊 نوع الخدمة: ${serviceTypeName}
-📦 الكمية: ${quantity}x ${packageQuantity} ${serviceTypeName}
-💰 السعر: ${totalPrice} درهم
+📦 الكمية المطلوبة: ${quantity.toLocaleString()} ${serviceTypeName}
+💰 السعر الإجمالي: ${totalPrice.toFixed(2)} درهم
 
 يرجى تأكيد الطلب وإرسال تفاصيل الدفع.`;
 

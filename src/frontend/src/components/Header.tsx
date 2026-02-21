@@ -7,12 +7,11 @@ export default function Header() {
         <Link to="/" className="flex items-center space-x-2 space-x-reverse">
           <img
             src="/assets/generated/smm-ourprice-logo.dim_400x400.png"
-            alt="SMM Ourprice"
+            alt="IBAZEX"
             className="h-10 w-10"
           />
           <span className="text-xl font-bold">
-            <span className="text-foreground">SMM</span>{' '}
-            <span className="text-cyan-500">OURPRICE</span>
+            <span className="text-cyan-500">IBAZEX</span>
           </span>
         </Link>
 

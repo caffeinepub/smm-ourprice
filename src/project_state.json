@@ -1,13 +1,18 @@
 {
   "schemaVersion": "1.0.0",
-  "projectStateVersion": 9,
+  "projectStateVersion": 21,
   "summary": "Professional social media marketing (SMM) services website for selling followers, likes, and views across social media platforms",
   "architectural_notes": [
     "SMM services platform for social media engagement products",
     "Multi-platform support: Facebook, Instagram, and other social networks",
-    "Contact integration via WhatsApp (+212779-781318)",
     "Arabic language localization required for all UI text",
-    "WhatsApp redirect for purchase flow instead of traditional checkout"
+    "WhatsApp redirect for purchase flow instead of traditional checkout",
+    "Allow flexible quantity selection for service packages instead of fixed tiers",
+    "Customer testimonials section to build social proof and trust",
+    "Admin dashboard should be hidden from public UI but remain accessible via direct route",
+    "Website rebranded to IBAZEX",
+    "Updated social media links: Instagram (ibs_syaf), Facebook (mryam.maryam.702036)",
+    "New WhatsApp contact: +212615473531"
   ],
   "known_issues": [],
   "isFixRequest": false,
@@ -211,6 +216,142 @@
         "REQ-38"
       ],
       "version": 1
+    },
+    {
+      "id": "feature-update-servicecard-component-to-allow-users-to-input-custom-quantities-for-followers-likes-and-views-services-instead-of-only-predefined-package-amounts",
+      "title": "Update ServiceCard component to allow users to input custom quantities for followers, likes, and views services instead of only predefined package amounts",
+      "reqIds": [
+        "REQ-39"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-whatsapp-contact-message-generation-to-include-the-user-specified-custom-quantity-and-calculated-price-in-the-pre-filled-message",
+      "title": "Update WhatsApp contact message generation to include the user-specified custom quantity and calculated price in the pre-filled message",
+      "reqIds": [
+        "REQ-41"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-servicemanagement-component-in-admin-dashboard-to-allow-setting-pricing-rules-or-unit-prices-for-services-that-support-custom-quantities",
+      "title": "Update ServiceManagement component in admin dashboard to allow setting pricing rules or unit prices for services that support custom quantities",
+      "reqIds": [
+        "REQ-42"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-create-a-testimonials-component-that-displays-customer-reviews-and-feedback-in-arabic-showcasing-clients-who-trust-the-smm-services",
+      "title": "Create a Testimonials component that displays customer reviews and feedback in Arabic, showcasing clients who trust the SMM services",
+      "reqIds": [
+        "REQ-43"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-integrate-the-testimonials-component-into-the-homepage-hero-tsx-or-app-tsx-below-the-hero-section-to-showcase-social-proof",
+      "title": "Integrate the Testimonials component into the homepage (Hero.tsx or App.tsx) below the hero section to showcase social proof",
+      "reqIds": [
+        "REQ-45"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-testimonial-management-interface-in-the-admindashboard-component-allowing-admins-to-view-add-edit-and-delete-customer-testimonials",
+      "title": "Add testimonial management interface in the AdminDashboard component allowing admins to view, add, edit, and delete customer testimonials",
+      "reqIds": [
+        "REQ-46"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-hide-the-admin-dashboard-navigation-link-in-the-header-component-located-at-xpath-html-1-body-1-div-1-div-1-header-1-div-1-nav-1-a-3-by-applying-css-to-make-it-invisible-display-none-or-visibility-hidden-while-keeping-it-in-the-dom-structure",
+      "title": "Hide the admin dashboard navigation link ('لوحة التحكم') in the Header component located at XPath /html[1]/body[1]/div[1]/div[1]/header[1]/div[1]/nav[1]/a[3] by applying CSS to make it invisible (display: none or visibility: hidden) while keeping it in the DOM structure",
+      "reqIds": [
+        "REQ-47"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-create-an-authentication-mechanism-in-the-admindashboard-component-that-requires-users-to-enter-the-secret-code-2030-before-accessing-the-admin-dashboard-interface",
+      "title": "Create an authentication mechanism in the AdminDashboard component that requires users to enter the secret code '2030' before accessing the admin dashboard interface",
+      "reqIds": [
+        "REQ-48"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-the-header-component-to-make-the-admin-dashboard-navigation-link-visible-again-since-it-will-now-be-protected-by-password-authentication",
+      "title": "Update the Header component to make the admin dashboard navigation link visible again, since it will now be protected by password authentication",
+      "reqIds": [
+        "REQ-49"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-store-the-admin-authentication-state-in-browser-sessionstorage-or-react-state-to-maintain-access-during-the-user-s-session-without-requiring-re-authentication-on-every-page-navigation",
+      "title": "Store the admin authentication state in browser sessionStorage or React state to maintain access during the user's session without requiring re-authentication on every page navigation",
+      "reqIds": [
+        "REQ-50"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-remove-the-adminauthgate-component-wrapper-from-the-admindashboard-component-in-frontend-src-components-admin-admindashboard-tsx-to-eliminate-the-password-authentication-requirement",
+      "title": "Remove the AdminAuthGate component wrapper from the AdminDashboard component in frontend/src/components/admin/AdminDashboard.tsx to eliminate the password authentication requirement",
+      "reqIds": [
+        "REQ-51"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-delete-the-useadminauth-custom-hook-file-at-frontend-src-hooks-useadminauth-ts-since-it-is-no-longer-needed-without-password-authentication",
+      "title": "Delete the useAdminAuth custom hook file at frontend/src/hooks/useAdminAuth.ts since it is no longer needed without password authentication",
+      "reqIds": [
+        "REQ-52"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-delete-the-adminauthgate-component-file-at-frontend-src-components-admin-adminauthgate-tsx-since-password-authentication-is-being-removed",
+      "title": "Delete the AdminAuthGate component file at frontend/src/components/admin/AdminAuthGate.tsx since password authentication is being removed",
+      "reqIds": [
+        "REQ-53"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-the-site-name-text-displayed-in-the-header-logo-from-smm-ourprice-to-ibazex-in-the-header-component-at-xpath-html-1-body-1-div-1-div-1-header-1-div-1-a-1-span-1-span-2",
+      "title": "Update the site name text displayed in the header logo from 'SMM Ourprice' to 'IBAZEX' in the Header component at XPath /html[1]/body[1]/div[1]/div[1]/header[1]/div[1]/a[1]/span[1]/span[2]",
+      "reqIds": [
+        "REQ-54"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-the-whatsapp-contact-number-throughout-the-application-from-212779-781318-to-212615473531-including-all-whatsapp-contact-buttons-in-servicecard-component-hero-component-footer-component-and-whatsapp-ts-utility-function",
+      "title": "Update the WhatsApp contact number throughout the application from +212779-781318 to +212615473531, including all WhatsApp contact buttons in ServiceCard component, Hero component, Footer component, and whatsapp.ts utility function",
+      "reqIds": [
+        "REQ-55"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-the-instagram-social-media-link-in-the-footer-component-from-https-www-instagram-com-smm-ourprice-igsh-mwj0mwzwz2vozzrhyg-to-https-www-instagram-com-ibs-syaf-igsh-mwc2bwv3bhppzhf5za",
+      "title": "Update the Instagram social media link in the Footer component from https://www.instagram.com/smm__ourprice?igsh=MWJ0MWZwZ2VoZzRhYg== to https://www.instagram.com/ibs_syaf?igsh=MWc2bWV3bHppZHF5ZA==",
+      "reqIds": [
+        "REQ-56"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-the-facebook-social-media-link-in-the-footer-component-from-https-www-facebook-com-share-14skzkmpmwb-to-https-www-facebook-com-mryam-maryam-702036",
+      "title": "Update the Facebook social media link in the Footer component from https://www.facebook.com/share/14SkZkmPmwb/ to https://www.facebook.com/mryam.maryam.702036",
+      "reqIds": [
+        "REQ-57"
+      ],
+      "version": 1
     }
   ],
   "new_feature_requests": [
@@ -351,6 +492,70 @@
     {
       "id": "AR-21",
       "summary": "Redirect customers to WhatsApp to contact the seller when selecting social media service packages",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-22",
+      "summary": "Add ability to customize quantity for followers/likes/views packages allowing user-selected amounts before contacting seller",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-24",
+      "summary": "Update backend service package data model to support flexible pricing calculation based on custom quantities rather than fixed package sizes",
+      "reqIds": [
+        "REQ-40"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-25",
+      "summary": "Add customer testimonials/reviews section showcasing clients who trust our services",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-27",
+      "summary": "Add backend data structure to store customer testimonials with fields for customer name, service type, testimonial text in Arabic, and rating",
+      "reqIds": [
+        "REQ-44"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-28",
+      "summary": "Hide admin dashboard/control panel from the UI",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-30",
+      "summary": "Remove password/secret code 2030 protection from admin dashboard",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-31",
+      "summary": "Change website name from 'SMM Ourprice' to 'IBAZEX' throughout the application",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-32",
+      "summary": "Update WhatsApp contact number from +212779-781318 to +212615473531 across all components",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-33",
+      "summary": "Update Instagram link to https://www.instagram.com/ibs_syaf?igsh=MWc2bWV3bHppZHF5ZA==",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-34",
+      "summary": "Update Facebook link to https://www.facebook.com/mryam.maryam.702036",
       "reqIds": [],
       "status": "pending"
     }

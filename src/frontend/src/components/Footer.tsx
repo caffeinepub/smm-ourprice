@@ -4,7 +4,7 @@ import { Heart } from 'lucide-react';
 export default function Footer() {
   const currentYear = new Date().getFullYear();
   const appIdentifier = encodeURIComponent(
-    typeof window !== 'undefined' ? window.location.hostname : 'smm-ourprice'
+    typeof window !== 'undefined' ? window.location.hostname : 'ibazex'
   );
 
   return (
@@ -16,12 +16,11 @@ export default function Footer() {
             <div className="flex items-center space-x-2 space-x-reverse">
               <img
                 src="/assets/generated/smm-ourprice-logo.dim_400x400.png"
-                alt="SMM Ourprice"
+                alt="IBAZEX"
                 className="h-10 w-10"
               />
               <span className="text-lg font-bold">
-                <span className="text-foreground">SMM</span>{' '}
-                <span className="text-cyan-500">OURPRICE</span>
+                <span className="text-cyan-500">IBAZEX</span>
               </span>
             </div>
             <p className="text-sm text-muted-foreground">
@@ -50,7 +49,7 @@ export default function Footer() {
             <h3 className="text-sm font-semibold uppercase tracking-wider">تواصل معنا</h3>
             <div className="flex space-x-4 space-x-reverse">
               <a
-                href="https://www.facebook.com/share/14SkZkmPmwb/"
+                href="https://www.facebook.com/mryam.maryam.702036"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-muted-foreground hover:text-cyan-500 transition-colors"
@@ -59,7 +58,7 @@ export default function Footer() {
                 <SiFacebook className="h-6 w-6" />
               </a>
               <a
-                href="https://www.instagram.com/smm__ourprice?igsh=MWJ0MWZwZ2VoZzRhYg=="
+                href="https://www.instagram.com/ibs_syaf?igsh=MWc2bWV3bHppZHF5ZA=="
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-muted-foreground hover:text-cyan-500 transition-colors"
@@ -68,7 +67,7 @@ export default function Footer() {
                 <SiInstagram className="h-6 w-6" />
               </a>
               <a
-                href="https://wa.me/212779781318"
+                href="https://wa.me/212615473531"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-muted-foreground hover:text-cyan-500 transition-colors"
@@ -78,14 +77,14 @@ export default function Footer() {
               </a>
             </div>
             <p className="text-sm text-muted-foreground">
-              واتساب: <a href="https://wa.me/212779781318" className="hover:text-cyan-500 transition-colors">+212 779-781318</a>
+              واتساب: <a href="https://wa.me/212615473531" className="hover:text-cyan-500 transition-colors">+212 615-473531</a>
             </p>
           </div>
         </div>
 
         <div className="mt-8 border-t border-border/40 pt-8 text-center">
           <p className="text-sm text-muted-foreground">
-            © {currentYear} SMM Ourprice. جميع الحقوق محفوظة.
+            © {currentYear} IBAZEX. جميع الحقوق محفوظة.
           </p>
           <p className="mt-2 text-sm text-muted-foreground flex items-center justify-center gap-1">
             صُنع بـ <Heart className="h-4 w-4 text-cyan-500 fill-cyan-500" /> باستخدام{' '}
