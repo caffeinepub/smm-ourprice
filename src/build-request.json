@@ -1,0 +1,87 @@
+{
+  "kind": "build_request",
+  "title": "Redirect service package selection to WhatsApp for direct seller contact",
+  "priority": "normal",
+  "requirements": [
+    {
+      "id": "REQ-35",
+      "text": "Replace the 'Add to Cart' button on ServiceCard component with a 'Contact on WhatsApp' button that redirects users to WhatsApp with a pre-filled message including the service details (platform, service type, quantity, price)",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-latest"
+        ],
+        "quotes": [
+          "عند اختيار باقات من خدمات التواصل الاجتماعي ينتقل المشتري الى الواتساب للتواصل مع البائع"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Each service card displays a WhatsApp contact button instead of 'Add to Cart' button",
+        "Button text is in Arabic: 'تواصل عبر الواتساب'",
+        "Clicking the button opens WhatsApp with pre-filled message containing service details",
+        "WhatsApp number is +212779781318 (from footer contact information)",
+        "Pre-filled message includes: platform name, service type, quantity, and price in Dirhams"
+      ]
+    },
+    {
+      "id": "REQ-36",
+      "text": "Remove or hide the shopping cart functionality from the Header component since users will contact via WhatsApp instead of using the cart",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-latest"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Shopping cart icon and badge are removed from the Header",
+        "Cart drawer/sheet is no longer accessible",
+        "Navigation remains functional with Home, Services, and Admin links"
+      ]
+    },
+    {
+      "id": "REQ-37",
+      "text": "Remove or disable the checkout flow including CheckoutPage and OrderSuccess components since orders will be handled through WhatsApp communication",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-latest"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Checkout route is removed or redirects to services page",
+        "Order success route is removed or redirects to services page",
+        "Users cannot access checkout flow through any navigation path"
+      ]
+    },
+    {
+      "id": "REQ-38",
+      "text": "Update the Hero component call-to-action to emphasize browsing services and contacting via WhatsApp rather than purchasing through the website",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-latest"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Hero CTA button text remains 'تصفح الخدمات' and navigates to services page",
+        "Optional: Add supporting text indicating users can contact via WhatsApp for orders"
+      ]
+    }
+  ],
+  "constraints": [
+    "Do not modify the backend order management system as it may still be used for tracking manual WhatsApp orders",
+    "Do not modify the admin dashboard functionality for managing services and viewing orders",
+    "Maintain all existing Arabic localization and RTL layout",
+    "Use the WhatsApp contact number +212779781318 from the existing footer"
+  ],
+  "nonGoals": [
+    "Implementing WhatsApp Business API integration",
+    "Creating a chat interface within the application",
+    "Building automated order confirmation system through WhatsApp",
+    "Modifying backend order submission endpoints"
+  ],
+  "imageRequirements": {
+    "required": [],
+    "edits": []
+  }
+}

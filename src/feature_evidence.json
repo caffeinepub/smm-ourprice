@@ -1,0 +1,78 @@
+{
+  "kind": "feature_evidence_report",
+  "features": [
+    {
+      "featureId": "feature-replace-the-add-to-cart-button-on-servicecard-component-with-a-contact-on-whatsapp-button-that-redirects-users-to-whatsapp-with-a-pre-filled-message-including-the-service-details-platform-service-type-quantity-price",
+      "featureTitle": "Replace the 'Add to Cart' button on ServiceCard component with a 'Contact on WhatsApp' button that redirects users to WhatsApp with a pre-filled message including the service details (platform, service type, quantity, price)",
+      "files": [
+        "frontend/src/components/ServiceCard.tsx",
+        "frontend/src/utils/whatsapp.ts"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-35"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-remove-or-hide-the-shopping-cart-functionality-from-the-header-component-since-users-will-contact-via-whatsapp-instead-of-using-the-cart",
+      "featureTitle": "Remove or hide the shopping cart functionality from the Header component since users will contact via WhatsApp instead of using the cart",
+      "files": [
+        "frontend/src/components/Header.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-36"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-remove-or-disable-the-checkout-flow-including-checkoutpage-and-ordersuccess-components-since-orders-will-be-handled-through-whatsapp-communication",
+      "featureTitle": "Remove or disable the checkout flow including CheckoutPage and OrderSuccess components since orders will be handled through WhatsApp communication",
+      "files": [
+        "frontend/src/App.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-37"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-update-the-hero-component-call-to-action-to-emphasize-browsing-services-and-contacting-via-whatsapp-rather-than-purchasing-through-the-website",
+      "featureTitle": "Update the Hero component call-to-action to emphasize browsing services and contacting via WhatsApp rather than purchasing through the website",
+      "files": [
+        "frontend/src/components/Hero.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-38"
+      ],
+      "confidence": "high"
+    }
+  ]
+}

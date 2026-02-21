@@ -1,0 +1,79 @@
+{
+  "kind": "coverage_report",
+  "version": "1.0",
+  "generatedAt": "2026-02-21T12:21:11.578Z",
+  "sources": {
+    "buildRequest": true,
+    "implementationPlan": true
+  },
+  "requirements": {
+    "total": 4,
+    "implemented": 4,
+    "items": [
+      {
+        "id": "REQ-35",
+        "summary": "Replace the 'Add to Cart' button on ServiceCard component with a 'Contact on WhatsApp' button that redirects users to WhatsApp with a pre-filled message including the service details (platform, service type, quantity, price)",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/components/ServiceCard.tsx",
+          "frontend/src/utils/whatsapp.ts"
+        ],
+        "matchedFiles": [
+          "frontend/src/components/ServiceCard.tsx",
+          "frontend/src/utils/whatsapp.ts"
+        ]
+      },
+      {
+        "id": "REQ-36",
+        "summary": "Remove or hide the shopping cart functionality from the Header component since users will contact via WhatsApp instead of using the cart",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/components/Header.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/components/Header.tsx"
+        ]
+      },
+      {
+        "id": "REQ-37",
+        "summary": "Remove or disable the checkout flow including CheckoutPage and OrderSuccess components since orders will be handled through WhatsApp communication",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/App.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/App.tsx"
+        ]
+      },
+      {
+        "id": "REQ-38",
+        "summary": "Update the Hero component call-to-action to emphasize browsing services and contacting via WhatsApp rather than purchasing through the website",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/components/Hero.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/components/Hero.tsx"
+        ]
+      }
+    ]
+  },
+  "changedFiles": [
+    "build-request.json",
+    "feature_evidence.json",
+    "frontend-file-summaries.txt",
+    "frontend-implementation-plan.json",
+    "frontend/src/App.tsx",
+    "frontend/src/components/Cart.tsx",
+    "frontend/src/components/CheckoutPage.tsx",
+    "frontend/src/components/Header.tsx",
+    "frontend/src/components/Hero.tsx",
+    "frontend/src/components/OrderSuccess.tsx",
+    "frontend/src/components/ServiceCard.tsx",
+    "frontend/src/utils/whatsapp.ts",
+    "project_state.json",
+    "scratch/component-selection.json",
+    "spec.md",
+    "spec_vs_diff_report.json"
+  ]
+}

@@ -1,0 +1,77 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "Redirect service package selection to WhatsApp for direct seller contact",
+  "requirements": [
+    {
+      "id": "REQ-35",
+      "summary": "Replace 'Add to Cart' button with WhatsApp contact button in ServiceCard component",
+      "acceptanceCriteria": [
+        "Each service card displays a WhatsApp contact button instead of 'Add to Cart' button",
+        "Button text is in Arabic: 'تواصل عبر الواتساب'",
+        "Clicking the button opens WhatsApp with pre-filled message containing service details",
+        "WhatsApp number is +212779781318 (from footer contact information)",
+        "Pre-filled message includes: platform name, service type, quantity, and price in Dirhams"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/ServiceCard.tsx",
+          "operation": "modify",
+          "description": "Replace the 'Add to Cart' button and quantity selector with a 'تواصل عبر الواتساب' button. Remove cart-related functionality including the addToCart handler and quantity state. Implement WhatsApp link generation that constructs a pre-filled message including platform name (in Arabic), service type (in Arabic), quantity, and price in Dirhams. The WhatsApp URL should follow the format: https://wa.me/212779781318?text=<encoded-message>. Remove dependency on useCart hook. Maintain all existing Arabic localization and RTL layout."
+        },
+        {
+          "path": "frontend/src/utils/whatsapp.ts",
+          "operation": "create",
+          "description": "Create a utility module for WhatsApp URL generation. Export a function that accepts ServicePackage data and returns a formatted WhatsApp URL with pre-filled message. The message should include platform name, service type, quantity, and price in Dirhams, all formatted in Arabic. Ensure proper URL encoding of the message text. Include Arabic translations for platform names (Facebook, Instagram, TikTok, YouTube) and service types (followers, likes, views)."
+        }
+      ]
+    },
+    {
+      "id": "REQ-36",
+      "summary": "Remove shopping cart functionality from Header component",
+      "acceptanceCriteria": [
+        "Shopping cart icon and badge are removed from the Header",
+        "Cart drawer/sheet is no longer accessible",
+        "Navigation remains functional with Home, Services, and Admin links"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/Header.tsx",
+          "operation": "modify",
+          "description": "Remove the shopping cart button including the ShoppingCart icon and item count badge. Remove the cartOpen state and setCartOpen handler. Remove the Cart component import and the Cart Sheet component from the JSX. Keep all navigation links (Home, Services, Admin) functional. Maintain the existing sticky header styling and Arabic RTL layout."
+        }
+      ]
+    },
+    {
+      "id": "REQ-37",
+      "summary": "Remove checkout flow including CheckoutPage and OrderSuccess routes",
+      "acceptanceCriteria": [
+        "Checkout route is removed or redirects to services page",
+        "Order success route is removed or redirects to services page",
+        "Users cannot access checkout flow through any navigation path"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Remove the checkout route definition and the order-success route definition from the router configuration. Remove imports for CheckoutPage and OrderSuccess components. The routes for '/checkout' and '/order-success' should no longer be accessible. Keep all other routes (home, services, admin) functional. Maintain the existing ThemeProvider, CartProvider wrapper, and Toaster configuration."
+        }
+      ]
+    },
+    {
+      "id": "REQ-38",
+      "summary": "Update Hero component to emphasize WhatsApp contact method",
+      "acceptanceCriteria": [
+        "Hero CTA button text remains 'تصفح الخدمات' and navigates to services page",
+        "Optional: Add supporting text indicating users can contact via WhatsApp for orders"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/Hero.tsx",
+          "operation": "modify",
+          "description": "Keep the existing 'تصفح الخدمات' CTA button and its navigation to the services page. Optionally add a subtitle or supporting text near the CTA that informs users they can contact via WhatsApp to place orders (in Arabic). Maintain the full-screen background image, animated logo, heading, tagline, and feature cards. Preserve all existing Arabic localization and styling."
+        }
+      ]
+    }
+  ]
+}

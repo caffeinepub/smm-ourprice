@@ -1,0 +1,362 @@
+{
+  "schemaVersion": "1.0.0",
+  "projectStateVersion": 9,
+  "summary": "Professional social media marketing (SMM) services website for selling followers, likes, and views across social media platforms",
+  "architectural_notes": [
+    "SMM services platform for social media engagement products",
+    "Multi-platform support: Facebook, Instagram, and other social networks",
+    "Contact integration via WhatsApp (+212779-781318)",
+    "Arabic language localization required for all UI text",
+    "WhatsApp redirect for purchase flow instead of traditional checkout"
+  ],
+  "known_issues": [],
+  "isFixRequest": false,
+  "existing_features": [
+    {
+      "id": "feature-create-a-homepage-hero-section-with-the-smm-ourprice-branding-tagline-emphasizing-professional-social-media-marketing-services-and-primary-call-to-action-button-to-browse-services",
+      "title": "Create a homepage hero section with the SMM Ourprice branding, tagline emphasizing professional social media marketing services, and primary call-to-action button to browse services",
+      "reqIds": [
+        "REQ-1"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-a-services-marketplace-page-displaying-social-media-service-packages-for-followers-likes-and-views-across-multiple-platforms-facebook-instagram-twitter-youtube-tiktok",
+      "title": "Implement a services marketplace page displaying social media service packages for followers, likes, and views across multiple platforms (Facebook, Instagram, Twitter, YouTube, TikTok)",
+      "reqIds": [
+        "REQ-2"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-build-an-admin-dashboard-control-panel-for-managing-services-viewing-orders-and-updating-package-availability-and-pricing",
+      "title": "Build an admin dashboard control panel for managing services, viewing orders, and updating package availability and pricing",
+      "reqIds": [
+        "REQ-4"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-a-shopping-cart-and-checkout-system-where-users-can-add-services-review-their-order-and-place-orders-with-customer-contact-information",
+      "title": "Implement a shopping cart and checkout system where users can add services, review their order, and place orders with customer contact information",
+      "reqIds": [
+        "REQ-5"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-a-footer-section-with-social-media-links-for-facebook-https-www-facebook-com-share-14skzkmpmwb-instagram-https-www-instagram-com-smm-ourprice-igsh-mwj0mwzwz2vozzrhyg-and-whatsapp-contact-212779-781318",
+      "title": "Add a footer section with social media links for Facebook (https://www.facebook.com/share/14SkZkmPmwb/), Instagram (https://www.instagram.com/smm__ourprice?igsh=MWJ0MWZwZ2VoZzRhYg==), and WhatsApp contact (+212779-781318)",
+      "reqIds": [
+        "REQ-6"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-display-the-generated-smm-ourprice-logo-as-the-site-header-logo-and-favicon-ensuring-consistent-branding-throughout-the-application",
+      "title": "Display the generated SMM Ourprice logo as the site header logo and favicon, ensuring consistent branding throughout the application",
+      "reqIds": [
+        "REQ-7"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-apply-a-bold-modern-design-theme-with-black-and-cyan-color-scheme-matching-the-smm-ourprice-branding-using-clean-typography-and-professional-layout-suitable-for-a-digital-services-marketplace",
+      "title": "Apply a bold, modern design theme with black and cyan color scheme matching the SMM Ourprice branding, using clean typography and professional layout suitable for a digital services marketplace",
+      "reqIds": [
+        "REQ-8"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-the-hero-component-to-display-all-text-content-in-arabic-including-the-animated-headings-tagline-feature-card-labels-and-call-to-action-button",
+      "title": "Update the Hero component to display all text content in Arabic, including the animated headings, tagline 'خدمات التسويق عبر وسائل التواصل الاجتماعي الاحترافية', feature card labels (متابعون, إعجابات, مشاهدات), and call-to-action button 'تصفح الخدمات'",
+      "reqIds": [
+        "REQ-21"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-localize-the-header-component-navigation-links-to-arabic-home-services-admin-and-shopping-cart-label",
+      "title": "Localize the Header component navigation links to Arabic: 'الرئيسية' (Home), 'الخدمات' (Services), 'لوحة التحكم' (Admin), and shopping cart label 'السلة'",
+      "reqIds": [
+        "REQ-22"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-translate-all-service-package-labels-and-metadata-in-the-servicespage-component-to-arabic-including-platform-tab-labels-and-service-type-labels",
+      "title": "Translate all service package labels and metadata in the ServicesPage component to Arabic, including platform tab labels (فيسبوك, إنستغرام, تويتر, يوتيوب, تيك توك) and service type labels (متابعون, إعجابات, مشاهدات, مشتركون)",
+      "reqIds": [
+        "REQ-23"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-localize-the-servicecard-component-to-display-arabic-text-for-all-ui-elements-including-quantity-label-price-display-format-x-delivery-estimate-x-and-button",
+      "title": "Localize the ServiceCard component to display Arabic text for all UI elements including quantity label 'الكمية', price display format 'السعر: X درهم', delivery estimate 'التسليم: X أيام', and 'أضف إلى السلة' button",
+      "reqIds": [
+        "REQ-24"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-translate-the-cart-component-to-arabic-including-the-cart-title-column-headers-empty-cart-message-item-quantity-controls-subtotal-label-and-checkout-button",
+      "title": "Translate the Cart component to Arabic including the cart title 'سلة التسوق', column headers, empty cart message 'سلتك فارغة', item quantity controls, subtotal label 'المجموع الفرعي', and checkout button 'إتمام الطلب'",
+      "reqIds": [
+        "REQ-25"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-localize-the-checkoutpage-component-form-to-arabic-including-field-labels-section-titles-and-and-submit-button",
+      "title": "Localize the CheckoutPage component form to Arabic including field labels 'الاسم الكامل', 'رقم الهاتف/البريد الإلكتروني', 'رابط الحساب', 'ملاحظات إضافية', section titles 'معلومات الاتصال' and 'ملخص الطلب', and submit button 'تأكيد الطلب'",
+      "reqIds": [
+        "REQ-26"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-translate-the-ordersuccess-component-to-arabic-including-the-success-message-process-steps-descriptions-and-action-buttons-and",
+      "title": "Translate the OrderSuccess component to Arabic including the success message 'تم تأكيد طلبك بنجاح!', process steps descriptions, and action buttons 'تصفح المزيد من الخدمات' and 'العودة للرئيسية'",
+      "reqIds": [
+        "REQ-27"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-localize-the-admindashboard-component-to-arabic-including-tab-labels-section-titles-and-all-admin-interface-text",
+      "title": "Localize the AdminDashboard component to Arabic including tab labels 'نظرة عامة', 'الخدمات', 'الطلبات', section titles, and all admin interface text",
+      "reqIds": [
+        "REQ-28"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-translate-the-dashboardoverview-component-metric-cards-to-arabic-including-and-recent-activity-section",
+      "title": "Translate the DashboardOverview component metric cards to Arabic including 'إجمالي الطلبات', 'الطلبات المعلقة', 'إجمالي الإيرادات', and recent activity section 'النشاط الأخير'",
+      "reqIds": [
+        "REQ-29"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-localize-the-servicemanagement-component-to-arabic-including-table-headers-add-service-button-form-field-labels-and-save-button",
+      "title": "Localize the ServiceManagement component to Arabic including table headers, add service button 'إضافة خدمة جديدة', form field labels 'المنصة', 'نوع الخدمة', 'الكمية', 'السعر', 'وقت التسليم', 'الوصف', 'متوفر', and save button 'حفظ الخدمة'",
+      "reqIds": [
+        "REQ-30"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-translate-the-orderstable-component-to-arabic-including-column-headers-status-options-and-any-action-labels",
+      "title": "Translate the OrdersTable component to Arabic including column headers 'رقم الطلب', 'العميل', 'جهة الاتصال', 'العناصر', 'المجموع', 'الحالة', status options 'قيد الانتظار', 'قيد المعالجة', 'مكتمل', 'ملغي', and any action labels",
+      "reqIds": [
+        "REQ-31"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-localize-the-footer-component-to-arabic-including-section-titles-navigation-links-contact-information-label-and-copyright-text-maintaining-links-to-social-media-platforms",
+      "title": "Localize the Footer component to Arabic including section titles, navigation links, contact information label 'اتصل بنا', and copyright text, maintaining links to social media platforms",
+      "reqIds": [
+        "REQ-32"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-apply-right-to-left-rtl-text-direction-to-the-entire-application-by-setting-dir-rtl-on-the-root-html-element-and-adjusting-css-to-ensure-proper-layout-flow-for-arabic-text-throughout-all-components",
+      "title": "Apply right-to-left (RTL) text direction to the entire application by setting dir='rtl' on the root HTML element and adjusting CSS to ensure proper layout flow for Arabic text throughout all components",
+      "reqIds": [
+        "REQ-33"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-the-document-title-in-index-html-to-smm-ourprice-to-reflect-arabic-localization",
+      "title": "Update the document title in index.html to 'SMM Ourprice - خدمات التسويق عبر وسائل التواصل الاجتماعي' to reflect Arabic localization",
+      "reqIds": [
+        "REQ-34"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-replace-the-add-to-cart-button-on-servicecard-component-with-a-contact-on-whatsapp-button-that-redirects-users-to-whatsapp-with-a-pre-filled-message-including-the-service-details-platform-service-type-quantity-price",
+      "title": "Replace the 'Add to Cart' button on ServiceCard component with a 'Contact on WhatsApp' button that redirects users to WhatsApp with a pre-filled message including the service details (platform, service type, quantity, price)",
+      "reqIds": [
+        "REQ-35"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-remove-or-hide-the-shopping-cart-functionality-from-the-header-component-since-users-will-contact-via-whatsapp-instead-of-using-the-cart",
+      "title": "Remove or hide the shopping cart functionality from the Header component since users will contact via WhatsApp instead of using the cart",
+      "reqIds": [
+        "REQ-36"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-remove-or-disable-the-checkout-flow-including-checkoutpage-and-ordersuccess-components-since-orders-will-be-handled-through-whatsapp-communication",
+      "title": "Remove or disable the checkout flow including CheckoutPage and OrderSuccess components since orders will be handled through WhatsApp communication",
+      "reqIds": [
+        "REQ-37"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-the-hero-component-call-to-action-to-emphasize-browsing-services-and-contacting-via-whatsapp-rather-than-purchasing-through-the-website",
+      "title": "Update the Hero component call-to-action to emphasize browsing services and contacting via WhatsApp rather than purchasing through the website",
+      "reqIds": [
+        "REQ-38"
+      ],
+      "version": 1
+    }
+  ],
+  "new_feature_requests": [
+    {
+      "id": "AR-1",
+      "summary": "Create SMM services marketplace with follower/like/view packages",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-2",
+      "summary": "Display dashboard/control panel for the website",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-3",
+      "summary": "Integrate social media links (Facebook, Instagram, WhatsApp contact)",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-6",
+      "summary": "Create service data models in the backend to store service packages with fields for platform type, service type (followers/likes/views), quantity, price, delivery estimate, and description",
+      "reqIds": [
+        "REQ-3"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-7",
+      "summary": "Add prices to each service package in the marketplace",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-8",
+      "summary": "Update the backend service package data model to include specific prices for TikTok followers packages: 1k followers for 25 Dh, 3k followers for 75 Dh, 5k followers for 125 Dh, 10k followers for 250 Dh, 20k followers for 500 Dh",
+      "reqIds": [
+        "REQ-9"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-9",
+      "summary": "Update the backend service package data model to include specific prices for TikTok likes packages: 1k likes for 10 Dh, 3k likes for 29 Dh, 5k likes for 45 Dh, 10k likes for 79 Dh, 20k likes for 149 Dh",
+      "reqIds": [
+        "REQ-10"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-10",
+      "summary": "Update the backend service package data model to include specific prices for TikTok views packages: 5k views for 10 Dh, 10k views for 19 Dh, 30k views for 49 Dh, 50k views for 79 Dh",
+      "reqIds": [
+        "REQ-11"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-11",
+      "summary": "Update the backend service package data model to include specific prices for Instagram followers packages: 1k followers for 25 Dh, 3k followers for 69 Dh, 5k followers for 99 Dh, 10k followers for 189 Dh, 20k followers for 379 Dh",
+      "reqIds": [
+        "REQ-12"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-12",
+      "summary": "Update the backend service package data model to include specific prices for Instagram likes packages: 1k likes for 10 Dh, 3k likes for 29 Dh, 5k likes for 45 Dh, 10k likes for 79 Dh, 20k likes for 149 Dh",
+      "reqIds": [
+        "REQ-13"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-13",
+      "summary": "Update the backend service package data model to include specific prices for Instagram views packages: 5k views for 10 Dh, 10k views for 19 Dh, 30k views for 49 Dh, 50k views for 79 Dh",
+      "reqIds": [
+        "REQ-14"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-14",
+      "summary": "Update the backend service package data model to include specific prices for Facebook followers packages: 1k followers for 19 Dh, 3k followers for 45 Dh, 5k followers for 69 Dh, 10k followers for 99 Dh, 20k followers for 189 Dh",
+      "reqIds": [
+        "REQ-15"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-15",
+      "summary": "Update the backend service package data model to include specific prices for Facebook likes packages: 1k likes for 15 Dh, 3k likes for 29 Dh, 5k likes for 69 Dh, 10k likes for 129 Dh, 20k likes for 239 Dh",
+      "reqIds": [
+        "REQ-16"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-16",
+      "summary": "Update the backend service package data model to include specific prices for Facebook views packages: 5k views for 19 Dh, 10k views for 39 Dh, 30k views for 79 Dh, 50k views for 119 Dh",
+      "reqIds": [
+        "REQ-17"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-17",
+      "summary": "Update the backend service package data model to include specific prices for YouTube subscribers packages: 500 subscribers for 189 Dh, 1000 subscribers for 349 Dh, 2000 subscribers for 599 Dh",
+      "reqIds": [
+        "REQ-18"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-18",
+      "summary": "Update the backend service package data model to include specific prices for YouTube likes packages: 1k likes for 19 Dh, 3k likes for 45 Dh, 5k likes for 69 Dh, 10k likes for 119 Dh, 20k likes for 199 Dh",
+      "reqIds": [
+        "REQ-19"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-19",
+      "summary": "Update the backend service package data model to include specific prices for YouTube views packages: 1k views for 25 Dh, 3k views for 69 Dh, 5k views for 99 Dh, 10k views for 189 Dh",
+      "reqIds": [
+        "REQ-20"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-20",
+      "summary": "Localize the entire website interface to Arabic language",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-21",
+      "summary": "Redirect customers to WhatsApp to contact the seller when selecting social media service packages",
+      "reqIds": [],
+      "status": "pending"
+    }
+  ],
+  "gameProjectType": "none",
+  "projectName": "Smm Ourprice",
+  "clarification_mode": "instant",
+  "clarification_rounds": 0
+}
