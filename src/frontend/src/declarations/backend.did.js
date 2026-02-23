@@ -91,6 +91,7 @@ export const idlService = IDL.Service({
   'saveCallerUserProfile' : IDL.Func([UserProfile], [], []),
   'updateOrderStatus' : IDL.Func([IDL.Nat, OrderStatus], [], []),
   'updateService' : IDL.Func([IDL.Nat, IDL.Nat, IDL.Nat, IDL.Bool], [], []),
+  'updateServicePrice' : IDL.Func([IDL.Nat, IDL.Nat], [], []),
 });
 
 export const idlInitArgs = [];
@@ -176,6 +177,7 @@ export const idlFactory = ({ IDL }) => {
     'saveCallerUserProfile' : IDL.Func([UserProfile], [], []),
     'updateOrderStatus' : IDL.Func([IDL.Nat, OrderStatus], [], []),
     'updateService' : IDL.Func([IDL.Nat, IDL.Nat, IDL.Nat, IDL.Bool], [], []),
+    'updateServicePrice' : IDL.Func([IDL.Nat, IDL.Nat], [], []),
   });
 };
 

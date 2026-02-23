@@ -1,96 +1,136 @@
 {
   "kind": "build_request",
-  "title": "Update branding from SMM Ourprice to IBAZEX in header",
-  "projectName": "IBAZEX",
+  "title": "Launch social media services marketplace with admin dashboard",
+  "projectName": "IBAZEX Store",
   "priority": "normal",
   "requirements": [
     {
-      "id": "REQ-54",
-      "text": "Update the site name text displayed in the header logo from 'SMM Ourprice' to 'IBAZEX' in the Header component at XPath /html[1]/body[1]/div[1]/div[1]/header[1]/div[1]/a[1]/span[1]/span[2]",
+      "id": "REQ-1",
+      "text": "Create a homepage in Arabic (RTL layout) with branding for IBAZEX social media services marketplace, showcasing the value proposition of selling followers, likes, and views for social media platforms",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-latest"
-        ],
-        "quotes": [
-          "قم بتغير اسم الموقع ليكون IBAZEX"
+          "msg-1",
+          "msg-2",
+          "msg-3"
         ]
       },
       "acceptanceCriteria": [
-        "The header logo text reads 'IBAZEX' instead of 'SMM Ourprice'",
-        "The change is applied to the specific span element at the provided XPath",
-        "Visual styling and positioning remain consistent with the existing design"
+        "Homepage displays Arabic text with proper RTL layout",
+        "Clear branding and tagline explaining the social media services",
+        "Professional and welcoming design"
       ]
     },
     {
-      "id": "REQ-55",
-      "text": "Update the WhatsApp contact number throughout the application from +212779-781318 to +212615473531, including all WhatsApp contact buttons in ServiceCard component, Hero component, Footer component, and whatsapp.ts utility function",
+      "id": "REQ-2",
+      "text": "Build a services page displaying available social media services (followers, likes, views) for different platforms (Facebook, Instagram, YouTube, TikTok) in a simple table format with service name, price, and description columns",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-latest"
-        ],
-        "quotes": [
-          "غير الرقم واتساب الى +212615473531"
+          "msg-4",
+          "msg-5"
         ]
       },
       "acceptanceCriteria": [
-        "All WhatsApp contact buttons use the phone number +212615473531",
-        "The WhatsApp URL generation in whatsapp.ts uses the new phone number",
-        "Footer displays the updated contact number",
-        "Hero component shows the updated WhatsApp contact information"
+        "Services displayed in a clean, easy-to-read table",
+        "Each row shows service name, price, and description",
+        "Table includes services for followers, likes, and views",
+        "Supports multiple social media platforms"
       ]
     },
     {
-      "id": "REQ-56",
-      "text": "Update the Instagram social media link in the Footer component from https://www.instagram.com/smm__ourprice?igsh=MWJ0MWZwZ2VoZzRhYg== to https://www.instagram.com/ibs_syaf?igsh=MWc2bWV3bHppZHF5ZA==",
-      "target": "frontend",
+      "id": "REQ-3",
+      "text": "Implement backend data model and API endpoints for services with fields including platform (Facebook/Instagram/YouTube/TikTok), service type (followers/likes/views), price, description, and availability status",
+      "target": "backend",
       "source": {
         "messageIds": [
-          "msg-latest"
-        ],
-        "quotes": [
-          "والانستغرامhttps://www.instagram.com/ibs_syaf?igsh=MWc2bWV3bHppZHF5ZA=="
+          "msg-4",
+          "msg-5"
         ]
       },
       "acceptanceCriteria": [
-        "Footer Instagram icon links to https://www.instagram.com/ibs_syaf?igsh=MWc2bWV3bHppZHF5ZA==",
-        "Link opens correctly in a new tab",
-        "Icon and styling remain unchanged"
+        "Services stored with platform, type, price, description fields",
+        "API endpoints to fetch all services",
+        "API endpoints to add, update, and delete services",
+        "Services can be marked as available or unavailable"
       ]
     },
     {
-      "id": "REQ-57",
-      "text": "Update the Facebook social media link in the Footer component from https://www.facebook.com/share/14SkZkmPmwb/ to https://www.facebook.com/mryam.maryam.702036",
-      "target": "frontend",
+      "id": "REQ-4",
+      "text": "Create an admin dashboard with authentication that allows editing service prices, adding new services, and managing service availability",
+      "target": "both",
       "source": {
         "messageIds": [
-          "msg-latest"
-        ],
-        "quotes": [
-          "وفيسبوك https://www.facebook.com/mryam.maryam.702036"
+          "msg-6"
         ]
       },
       "acceptanceCriteria": [
-        "Footer Facebook icon links to https://www.facebook.com/mryam.maryam.702036",
-        "Link opens correctly in a new tab",
-        "Icon and styling remain unchanged"
+        "Admin panel requires authentication to access",
+        "Interface to view all services in a manageable format",
+        "Ability to edit prices for existing services",
+        "Ability to add new services with all required fields",
+        "Ability to toggle service availability on/off"
+      ]
+    },
+    {
+      "id": "REQ-5",
+      "text": "Implement customer order system allowing users to place orders for services with fields for customer details (name, contact), selected service, quantity, and any additional information",
+      "target": "both",
+      "source": {
+        "messageIds": [
+          "msg-7"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Order form collects customer name and contact information",
+        "Users can select service and specify quantity",
+        "Orders stored in backend with status tracking",
+        "Admin can view all orders in dashboard"
+      ]
+    },
+    {
+      "id": "REQ-6",
+      "text": "Integrate Internet Identity authentication system for secure user and admin access",
+      "target": "both",
+      "source": {
+        "messageIds": [
+          "msg-7"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Users can authenticate using Internet Identity",
+        "Authentication state persisted across sessions",
+        "Protected routes require authentication",
+        "Admin features restricted to authenticated admin users"
+      ]
+    },
+    {
+      "id": "REQ-7",
+      "text": "Apply a creative, modern, and professional visual design theme with a distinct style that reflects the digital marketing and social media industry, using a cohesive color palette, typography, and layout patterns consistently throughout the application",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-7"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Consistent color scheme used across all pages",
+        "Professional typography suitable for Arabic text",
+        "Modern layout with appropriate spacing and visual hierarchy",
+        "Design reflects digital marketing industry aesthetic"
       ]
     }
   ],
   "constraints": [
-    "Only modify the specific header elements identified by the provided XPath expressions",
-    "Preserve all existing RTL layout and Arabic language support",
-    "Maintain the current design theme (black and cyan color scheme)",
-    "Do not modify the admin dashboard or backend logic",
-    "Keep all other branding elements unchanged unless specifically mentioned"
+    "All user-facing text must be in Arabic with RTL layout support",
+    "Use Internet Identity for authentication (no custom password systems)",
+    "Backend must use single-actor Motoko architecture"
   ],
   "nonGoals": [
-    "Updating branding in other components beyond the header",
-    "Changing the logo image or favicon",
-    "Modifying the document title or meta tags",
-    "Updating testimonials or service content",
-    "Changing the overall design theme or color scheme"
+    "Integration with actual social media platform APIs",
+    "Automated fulfillment of orders",
+    "Payment processing system",
+    "Multi-language support beyond Arabic"
   ],
   "imageRequirements": {
     "required": [],

@@ -74,4 +74,5 @@ export interface backendInterface {
     saveCallerUserProfile(profile: UserProfile): Promise<void>;
     updateOrderStatus(orderId: bigint, status: OrderStatus): Promise<void>;
     updateService(id: bigint, baseUnitPriceCents: bigint, baseUnitPriceDh: bigint, available: boolean): Promise<void>;
+    updateServicePrice(id: bigint, newPriceDh: bigint): Promise<void>;
 }

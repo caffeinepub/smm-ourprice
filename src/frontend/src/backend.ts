@@ -157,6 +157,7 @@ export interface backendInterface {
     saveCallerUserProfile(profile: UserProfile): Promise<void>;
     updateOrderStatus(orderId: bigint, status: OrderStatus): Promise<void>;
     updateService(id: bigint, baseUnitPriceCents: bigint, baseUnitPriceDh: bigint, available: boolean): Promise<void>;
+    updateServicePrice(id: bigint, newPriceDh: bigint): Promise<void>;
 }
 import type { CartItem as _CartItem, Order as _Order, OrderStatus as _OrderStatus, Platform as _Platform, Service as _Service, ServiceType as _ServiceType, Testimonial as _Testimonial, UserProfile as _UserProfile, UserRole as _UserRole } from "./declarations/backend.did.d.ts";
 export class Backend implements backendInterface {
@@ -368,6 +369,20 @@ export class Backend implements backendInterface {
             }
         } else {
             const result = await this.actor.updateService(arg0, arg1, arg2, arg3);
+            return result;
+        }
+    }
+    async updateServicePrice(arg0: bigint, arg1: bigint): Promise<void> {
+        if (this.processError) {
+            try {
+                const result = await this.actor.updateServicePrice(arg0, arg1);
+                return result;
+            } catch (e) {
+                this.processError(e);
+                throw new Error("unreachable");
+            }
+        } else {
+            const result = await this.actor.updateServicePrice(arg0, arg1);
             return result;
         }
     }

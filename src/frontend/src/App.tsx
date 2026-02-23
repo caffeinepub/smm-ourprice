@@ -6,10 +6,20 @@ import Footer from './components/Footer';
 import Hero from './components/Hero';
 import ServicesPage from './components/ServicesPage';
 import AdminDashboard from './components/admin/AdminDashboard';
+import AdminAuthGate from './components/admin/AdminAuthGate';
+import ProfileSetupDialog from './components/ProfileSetupDialog';
 import { CartProvider } from './hooks/useCart';
+import { useInternetIdentity } from './hooks/useInternetIdentity';
+import { useGetCallerUserProfile } from './hooks/useQueries';
 
-// Layout component with Header and Footer
+// Layout component with Header, Footer, and Profile Setup
 function Layout() {
+  const { identity } = useInternetIdentity();
+  const { data: userProfile, isLoading: profileLoading, isFetched } = useGetCallerUserProfile();
+  
+  const isAuthenticated = !!identity;
+  const showProfileSetup = isAuthenticated && !profileLoading && isFetched && userProfile === null;
+
   return (
     <div className="flex min-h-screen flex-col">
       <Header />
@@ -17,6 +27,7 @@ function Layout() {
         <Outlet />
       </main>
       <Footer />
+      <ProfileSetupDialog open={showProfileSetup} />
     </div>
   );
 }
@@ -40,11 +51,15 @@ const servicesRoute = createRoute({
   component: ServicesPage,
 });
 
-// Admin dashboard route
+// Admin dashboard route with authentication gate
 const adminRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: '/admin',
-  component: AdminDashboard,
+  component: () => (
+    <AdminAuthGate>
+      <AdminDashboard />
+    </AdminAuthGate>
+  ),
 });
 
 // Create router

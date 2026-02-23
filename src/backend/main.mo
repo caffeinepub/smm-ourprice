@@ -147,6 +147,20 @@ actor {
     };
   };
 
+  public shared ({ caller }) func updateServicePrice(id : Nat, newPriceDh : Nat) : async () {
+    if (not (AccessControl.hasPermission(accessControlState, caller, #admin))) {
+      Runtime.trap("Unauthorized: Only admins can update service prices");
+    };
+
+    switch (services.get(id)) {
+      case (null) { Runtime.trap("Service not found"); };
+      case (?service) {
+        let updatedService = { service with baseUnitPriceDh = newPriceDh };
+        services.add(id, updatedService);
+      };
+    };
+  };
+
   public query ({ caller }) func getAvailableServices() : async [Service] {
     services.values().toArray().sort().filter(
       func(service) {

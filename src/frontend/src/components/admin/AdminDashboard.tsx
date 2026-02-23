@@ -4,15 +4,20 @@ import ServiceManagement from './ServiceManagement';
 import OrdersTable from './OrdersTable';
 import TestimonialManagement from './TestimonialManagement';
 import { LayoutDashboard, Package, ShoppingCart, MessageSquare } from 'lucide-react';
+import { useGetCallerUserProfile } from '../../hooks/useQueries';
 
 export default function AdminDashboard() {
+  const { data: userProfile } = useGetCallerUserProfile();
+
   return (
     <div className="container py-12">
       <div className="mb-8">
         <h1 className="mb-2 text-4xl font-black tracking-tight">
           <span className="text-cyan-500">لوحة التحكم</span> الإدارية
         </h1>
-        <p className="text-muted-foreground">إدارة الخدمات والطلبات وعرض التحليلات</p>
+        <p className="text-muted-foreground">
+          {userProfile ? `مرحباً ${userProfile.name}، ` : ''}إدارة الخدمات والطلبات وعرض التحليلات
+        </p>
       </div>
 
       <Tabs defaultValue="overview" className="space-y-6">

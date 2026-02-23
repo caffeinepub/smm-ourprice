@@ -2,8 +2,8 @@
   "kind": "feature_evidence_report",
   "features": [
     {
-      "featureId": "feature-update-the-site-name-text-displayed-in-the-header-logo-from-smm-ourprice-to-ibazex-in-the-header-component-at-xpath-html-1-body-1-div-1-div-1-header-1-div-1-a-1-span-1-span-2",
-      "featureTitle": "Update the site name text displayed in the header logo from 'SMM Ourprice' to 'IBAZEX' in the Header component at XPath /html[1]/body[1]/div[1]/div[1]/header[1]/div[1]/a[1]/span[1]/span[2]",
+      "featureId": "feature-create-a-homepage-in-arabic-rtl-layout-with-branding-for-ibazex-social-media-services-marketplace-showcasing-the-value-proposition-of-selling-followers-likes-and-views-for-social-media-platforms",
+      "featureTitle": "Create a homepage in Arabic (RTL layout) with branding for IBAZEX social media services marketplace, showcasing the value proposition of selling followers, likes, and views for social media platforms",
       "files": [
         "frontend/src/components/Header.tsx"
       ],
@@ -16,17 +16,17 @@
         "authorization@4.0.0"
       ],
       "testIds": [
-        "REQ-54"
+        "REQ-1"
       ],
       "confidence": "high"
     },
     {
-      "featureId": "feature-update-the-whatsapp-contact-number-throughout-the-application-from-212779-781318-to-212615473531-including-all-whatsapp-contact-buttons-in-servicecard-component-hero-component-footer-component-and-whatsapp-ts-utility-function",
-      "featureTitle": "Update the WhatsApp contact number throughout the application from +212779-781318 to +212615473531, including all WhatsApp contact buttons in ServiceCard component, Hero component, Footer component, and whatsapp.ts utility function",
+      "featureId": "feature-create-an-admin-dashboard-with-authentication-that-allows-editing-service-prices-adding-new-services-and-managing-service-availability",
+      "featureTitle": "Create an admin dashboard with authentication that allows editing service prices, adding new services, and managing service availability",
       "files": [
-        "frontend/src/components/Footer.tsx",
-        "frontend/src/components/Hero.tsx",
-        "frontend/src/utils/whatsapp.ts"
+        "frontend/src/components/admin/AdminAuthGate.tsx",
+        "frontend/src/components/admin/AdminDashboard.tsx",
+        "frontend/src/hooks/useAdminAuth.ts"
       ],
       "components": [
         "core-infrastructure@1.0.2",
@@ -37,15 +37,16 @@
         "authorization@4.0.0"
       ],
       "testIds": [
-        "REQ-55"
+        "REQ-4"
       ],
       "confidence": "high"
     },
     {
-      "featureId": "feature-update-the-instagram-social-media-link-in-the-footer-component-from-https-www-instagram-com-smm-ourprice-igsh-mwj0mwzwz2vozzrhyg-to-https-www-instagram-com-ibs-syaf-igsh-mwc2bwv3bhppzhf5za",
-      "featureTitle": "Update the Instagram social media link in the Footer component from https://www.instagram.com/smm__ourprice?igsh=MWJ0MWZwZ2VoZzRhYg== to https://www.instagram.com/ibs_syaf?igsh=MWc2bWV3bHppZHF5ZA==",
+      "featureId": "feature-implement-customer-order-system-allowing-users-to-place-orders-for-services-with-fields-for-customer-details-name-contact-selected-service-quantity-and-any-additional-information",
+      "featureTitle": "Implement customer order system allowing users to place orders for services with fields for customer details (name, contact), selected service, quantity, and any additional information",
       "files": [
-        "frontend/src/components/Footer.tsx"
+        "frontend/src/App.tsx",
+        "frontend/src/hooks/useQueries.ts"
       ],
       "components": [
         "core-infrastructure@1.0.2",
@@ -56,15 +57,18 @@
         "authorization@4.0.0"
       ],
       "testIds": [
-        "REQ-56"
+        "REQ-5"
       ],
       "confidence": "high"
     },
     {
-      "featureId": "feature-update-the-facebook-social-media-link-in-the-footer-component-from-https-www-facebook-com-share-14skzkmpmwb-to-https-www-facebook-com-mryam-maryam-702036",
-      "featureTitle": "Update the Facebook social media link in the Footer component from https://www.facebook.com/share/14SkZkmPmwb/ to https://www.facebook.com/mryam.maryam.702036",
+      "featureId": "feature-integrate-internet-identity-authentication-system-for-secure-user-and-admin-access",
+      "featureTitle": "Integrate Internet Identity authentication system for secure user and admin access",
       "files": [
-        "frontend/src/components/Footer.tsx"
+        "frontend/src/App.tsx",
+        "frontend/src/components/Header.tsx",
+        "frontend/src/components/ProfileSetupDialog.tsx",
+        "frontend/src/hooks/useQueries.ts"
       ],
       "components": [
         "core-infrastructure@1.0.2",
@@ -75,7 +79,7 @@
         "authorization@4.0.0"
       ],
       "testIds": [
-        "REQ-57"
+        "REQ-6"
       ],
       "confidence": "high"
     }
