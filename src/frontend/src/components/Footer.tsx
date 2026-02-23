@@ -15,13 +15,10 @@ export default function Footer() {
           <div className="flex flex-col space-y-4">
             <div className="flex items-center space-x-2 space-x-reverse">
               <img
-                src="/assets/generated/smm-ourprice-logo.dim_400x400.png"
+                src="/assets/generated/ibazex-logo.dim_200x60.png"
                 alt="IBAZEX"
-                className="h-10 w-10"
+                className="h-10 w-auto"
               />
-              <span className="text-lg font-bold">
-                <span className="text-cyan-500">IBAZEX</span>
-              </span>
             </div>
             <p className="text-sm text-muted-foreground">
               خدمات التسويق عبر وسائل التواصل الاجتماعي الاحترافية. عزز تواجدك بمتابعين وإعجابات ومشاهدات عالية الجودة.

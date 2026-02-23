@@ -26,9 +26,9 @@ export default function Hero() {
             {/* Logo */}
             <div className="flex justify-center">
               <img
-                src="/assets/generated/smm-ourprice-logo.dim_400x400.png"
+                src="/assets/generated/ibazex-logo-hero.dim_400x120.png"
                 alt="IBAZEX"
-                className="h-32 w-32 animate-in fade-in zoom-in duration-500"
+                className="h-32 w-auto animate-in fade-in zoom-in duration-500"
               />
             </div>
 

@@ -2,8 +2,8 @@
   "kind": "feature_evidence_report",
   "features": [
     {
-      "featureId": "feature-create-a-homepage-in-arabic-rtl-layout-with-branding-for-ibazex-social-media-services-marketplace-showcasing-the-value-proposition-of-selling-followers-likes-and-views-for-social-media-platforms",
-      "featureTitle": "Create a homepage in Arabic (RTL layout) with branding for IBAZEX social media services marketplace, showcasing the value proposition of selling followers, likes, and views for social media platforms",
+      "featureId": "feature-remove-the-login-button-from-the-header-component-across-all-pages",
+      "featureTitle": "Remove the login button from the Header component across all pages",
       "files": [
         "frontend/src/components/Header.tsx"
       ],
@@ -21,54 +21,12 @@
       "confidence": "high"
     },
     {
-      "featureId": "feature-create-an-admin-dashboard-with-authentication-that-allows-editing-service-prices-adding-new-services-and-managing-service-availability",
-      "featureTitle": "Create an admin dashboard with authentication that allows editing service prices, adding new services, and managing service availability",
+      "featureId": "feature-remove-the-smmourprice-logo-from-all-components-where-it-appears",
+      "featureTitle": "Remove the smmourprice logo from all components where it appears",
       "files": [
-        "frontend/src/components/admin/AdminAuthGate.tsx",
-        "frontend/src/components/admin/AdminDashboard.tsx",
-        "frontend/src/hooks/useAdminAuth.ts"
-      ],
-      "components": [
-        "core-infrastructure@1.0.2",
-        "shadcn-ui@1.0.0",
-        "build-template-react@1.0.0",
-        "initial-app@1.0.0",
-        "github-export-icp-cli@1.0.0",
-        "authorization@4.0.0"
-      ],
-      "testIds": [
-        "REQ-4"
-      ],
-      "confidence": "high"
-    },
-    {
-      "featureId": "feature-implement-customer-order-system-allowing-users-to-place-orders-for-services-with-fields-for-customer-details-name-contact-selected-service-quantity-and-any-additional-information",
-      "featureTitle": "Implement customer order system allowing users to place orders for services with fields for customer details (name, contact), selected service, quantity, and any additional information",
-      "files": [
-        "frontend/src/App.tsx",
-        "frontend/src/hooks/useQueries.ts"
-      ],
-      "components": [
-        "core-infrastructure@1.0.2",
-        "shadcn-ui@1.0.0",
-        "build-template-react@1.0.0",
-        "initial-app@1.0.0",
-        "github-export-icp-cli@1.0.0",
-        "authorization@4.0.0"
-      ],
-      "testIds": [
-        "REQ-5"
-      ],
-      "confidence": "high"
-    },
-    {
-      "featureId": "feature-integrate-internet-identity-authentication-system-for-secure-user-and-admin-access",
-      "featureTitle": "Integrate Internet Identity authentication system for secure user and admin access",
-      "files": [
-        "frontend/src/App.tsx",
+        "frontend/src/components/Footer.tsx",
         "frontend/src/components/Header.tsx",
-        "frontend/src/components/ProfileSetupDialog.tsx",
-        "frontend/src/hooks/useQueries.ts"
+        "frontend/src/components/Hero.tsx"
       ],
       "components": [
         "core-infrastructure@1.0.2",
@@ -79,7 +37,28 @@
         "authorization@4.0.0"
       ],
       "testIds": [
-        "REQ-6"
+        "REQ-2"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-add-ibazex-logo-in-place-of-the-removed-smmourprice-logo-in-header-hero-and-footer-components",
+      "featureTitle": "Add IBAZEX logo in place of the removed smmourprice logo in Header, Hero, and Footer components",
+      "files": [
+        "frontend/src/components/Footer.tsx",
+        "frontend/src/components/Header.tsx",
+        "frontend/src/components/Hero.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0",
+        "authorization@4.0.0"
+      ],
+      "testIds": [
+        "REQ-3"
       ],
       "confidence": "high"
     }

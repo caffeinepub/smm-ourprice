@@ -1,104 +1,44 @@
 {
   "schemaVersion": "1.0.0",
   "projectStateVersion": 3,
-  "summary": "Social media service marketplace website (Arabic): sell followers, likes, and views for social media platforms with admin dashboard for pricing management and customer order system",
+  "summary": "Arabic website with services table, pricing, and IBAZEX branding (login removed)",
   "architectural_notes": [
-    "Arabic RTL website for social media services marketplace",
-    "Pricing managed via admin dashboard (editable)",
-    "Services include: followers, likes, views for social platforms"
+    "IBAZEX logo replaces smmourprice logo",
+    "No login/authentication system - all features are public",
+    "Arabic language interface",
+    "Services and pricing table display"
   ],
   "known_issues": [],
   "isFixRequest": false,
+  "imageRequirements": "## Required Images\n- IBAZEX brand logo with modern design suitable for header navigation (ibazex-logo.dim_200x60.png)\n- IBAZEX brand logo larger version for hero section with transparent background (ibazex-logo-hero.dim_400x120.png)",
   "existing_features": [
     {
-      "id": "feature-create-a-homepage-in-arabic-rtl-layout-with-branding-for-ibazex-social-media-services-marketplace-showcasing-the-value-proposition-of-selling-followers-likes-and-views-for-social-media-platforms",
-      "title": "Create a homepage in Arabic (RTL layout) with branding for IBAZEX social media services marketplace, showcasing the value proposition of selling followers, likes, and views for social media platforms",
+      "id": "feature-remove-the-login-button-from-the-header-component-across-all-pages",
+      "title": "Remove the login button from the Header component across all pages",
       "reqIds": [
         "REQ-1"
       ],
       "version": 1
     },
     {
-      "id": "feature-create-an-admin-dashboard-with-authentication-that-allows-editing-service-prices-adding-new-services-and-managing-service-availability",
-      "title": "Create an admin dashboard with authentication that allows editing service prices, adding new services, and managing service availability",
-      "reqIds": [
-        "REQ-4"
-      ],
-      "version": 1
-    },
-    {
-      "id": "feature-implement-customer-order-system-allowing-users-to-place-orders-for-services-with-fields-for-customer-details-name-contact-selected-service-quantity-and-any-additional-information",
-      "title": "Implement customer order system allowing users to place orders for services with fields for customer details (name, contact), selected service, quantity, and any additional information",
-      "reqIds": [
-        "REQ-5"
-      ],
-      "version": 1
-    },
-    {
-      "id": "feature-integrate-internet-identity-authentication-system-for-secure-user-and-admin-access",
-      "title": "Integrate Internet Identity authentication system for secure user and admin access",
-      "reqIds": [
-        "REQ-6"
-      ],
-      "version": 1
-    }
-  ],
-  "new_feature_requests": [
-    {
-      "id": "AR-1",
-      "summary": "Services page with pricing table for social media services (followers, likes, views)",
-      "reqIds": [],
-      "status": "in_progress"
-    },
-    {
-      "id": "AR-2",
-      "summary": "Admin dashboard to edit services and pricing",
-      "reqIds": [
-        "AR-1"
-      ],
-      "status": "in_progress"
-    },
-    {
-      "id": "AR-3",
-      "summary": "Customer order system",
-      "reqIds": [
-        "AR-1"
-      ],
-      "status": "in_progress"
-    },
-    {
-      "id": "AR-4",
-      "summary": "Authentication system using Internet Identity",
-      "reqIds": [],
-      "status": "in_progress"
-    },
-    {
-      "id": "AR-6",
-      "summary": "Build a services page displaying available social media services (followers, likes, views) for different platforms (Facebook, Instagram, YouTube, TikTok) in a simple table format with service name, price, and description columns",
+      "id": "feature-remove-the-smmourprice-logo-from-all-components-where-it-appears",
+      "title": "Remove the smmourprice logo from all components where it appears",
       "reqIds": [
         "REQ-2"
       ],
-      "status": "pending"
+      "version": 1
     },
     {
-      "id": "AR-7",
-      "summary": "Implement backend data model and API endpoints for services with fields including platform (Facebook/Instagram/YouTube/TikTok), service type (followers/likes/views), price, description, and availability status",
+      "id": "feature-add-ibazex-logo-in-place-of-the-removed-smmourprice-logo-in-header-hero-and-footer-components",
+      "title": "Add IBAZEX logo in place of the removed smmourprice logo in Header, Hero, and Footer components",
       "reqIds": [
         "REQ-3"
       ],
-      "status": "pending"
-    },
-    {
-      "id": "AR-11",
-      "summary": "Apply a creative, modern, and professional visual design theme with a distinct style that reflects the digital marketing and social media industry, using a cohesive color palette, typography, and layout patterns consistently throughout the application",
-      "reqIds": [
-        "REQ-7"
-      ],
-      "status": "pending"
+      "version": 1
     }
   ],
-  "gameProjectType": "none",
-  "projectName": "IBAZEX Store",
+  "new_feature_requests": [],
+  "projectName": "IBAZEX",
   "clarification_mode": "instant",
   "clarification_rounds": 0
 }

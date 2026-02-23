@@ -1,23 +1,21 @@
 {
   "kind": "coverage_report",
   "version": "1.0",
-  "generatedAt": "2026-02-23T23:40:13.492Z",
+  "generatedAt": "2026-02-23T23:51:31.282Z",
   "sources": {
     "buildRequest": true,
     "implementationPlan": true
   },
   "requirements": {
-    "total": 7,
-    "implemented": 4,
+    "total": 3,
+    "implemented": 3,
     "items": [
       {
         "id": "REQ-1",
-        "summary": "Create a homepage in Arabic (RTL layout) with branding for IBAZEX social media services marketplace, showcasing the value proposition of selling followers, likes, and views for social media platforms",
+        "summary": "Remove the login button from the Header component across all pages",
         "status": "implemented",
         "plannedFiles": [
-          "frontend/src/components/Hero.tsx",
-          "frontend/src/components/Header.tsx",
-          "frontend/index.html"
+          "frontend/src/components/Header.tsx"
         ],
         "matchedFiles": [
           "frontend/src/components/Header.tsx"
@@ -25,82 +23,33 @@
       },
       {
         "id": "REQ-2",
-        "summary": "Build a services page displaying available social media services (followers, likes, views) for different platforms (Facebook, Instagram, YouTube, TikTok) in a simple table format with service name, price, and description columns",
-        "status": "missing",
+        "summary": "Remove the smmourprice logo from all components where it appears",
+        "status": "implemented",
         "plannedFiles": [
-          "frontend/src/components/ServicesPage.tsx",
-          "frontend/src/components/ServiceCard.tsx"
+          "frontend/src/components/Header.tsx",
+          "frontend/src/components/Hero.tsx",
+          "frontend/src/components/Footer.tsx"
         ],
-        "matchedFiles": []
+        "matchedFiles": [
+          "frontend/src/components/Header.tsx",
+          "frontend/src/components/Hero.tsx",
+          "frontend/src/components/Footer.tsx"
+        ]
       },
       {
         "id": "REQ-3",
-        "summary": "Implement backend data model and API endpoints for services with fields including platform (Facebook/Instagram/YouTube/TikTok), service type (followers/likes/views), price, description, and availability status",
-        "status": "unknown",
-        "plannedFiles": [],
-        "matchedFiles": []
-      },
-      {
-        "id": "REQ-4",
-        "summary": "Create an admin dashboard with authentication that allows editing service prices, adding new services, and managing service availability",
+        "summary": "Add IBAZEX logo in place of the removed smmourprice logo in Header, Hero, and Footer components",
         "status": "implemented",
         "plannedFiles": [
-          "frontend/src/components/admin/AdminAuthGate.tsx",
-          "frontend/src/components/admin/AdminDashboard.tsx",
-          "frontend/src/components/admin/ServiceManagement.tsx",
-          "frontend/src/components/admin/OrdersTable.tsx",
-          "frontend/src/components/admin/DashboardOverview.tsx",
-          "frontend/src/hooks/useAdminAuth.ts"
-        ],
-        "matchedFiles": [
-          "frontend/src/components/admin/AdminAuthGate.tsx",
-          "frontend/src/components/admin/AdminDashboard.tsx",
-          "frontend/src/hooks/useAdminAuth.ts"
-        ]
-      },
-      {
-        "id": "REQ-5",
-        "summary": "Implement customer order system allowing users to place orders for services with fields for customer details (name, contact), selected service, quantity, and any additional information",
-        "status": "implemented",
-        "plannedFiles": [
-          "frontend/src/components/ServiceCard.tsx",
-          "frontend/src/hooks/useQueries.ts",
-          "frontend/src/components/OrderSuccess.tsx",
-          "frontend/src/App.tsx"
-        ],
-        "matchedFiles": [
-          "frontend/src/hooks/useQueries.ts",
-          "frontend/src/App.tsx"
-        ]
-      },
-      {
-        "id": "REQ-6",
-        "summary": "Integrate Internet Identity authentication system for secure user and admin access",
-        "status": "implemented",
-        "plannedFiles": [
-          "frontend/src/hooks/useInternetIdentity.ts",
           "frontend/src/components/Header.tsx",
-          "frontend/src/hooks/useQueries.ts",
-          "frontend/src/components/ProfileSetupDialog.tsx",
-          "frontend/src/App.tsx"
-        ],
-        "matchedFiles": [
-          "frontend/src/components/Header.tsx",
-          "frontend/src/hooks/useQueries.ts",
-          "frontend/src/components/ProfileSetupDialog.tsx",
-          "frontend/src/App.tsx"
-        ]
-      },
-      {
-        "id": "REQ-7",
-        "summary": "Apply a creative, modern, and professional visual design theme with a distinct style that reflects the digital marketing and social media industry, using a cohesive color palette, typography, and layout patterns consistently throughout the application",
-        "status": "missing",
-        "plannedFiles": [
-          "frontend/src/index.css",
-          "frontend/tailwind.config.js",
+          "frontend/src/components/Hero.tsx",
           "frontend/src/components/Footer.tsx"
         ],
-        "matchedFiles": []
+        "matchedFiles": [
+          "frontend/src/components/Header.tsx",
+          "frontend/src/components/Hero.tsx",
+          "frontend/src/components/Footer.tsx"
+        ]
       }
     ]
   },
@@ -109,13 +58,11 @@
     "feature_evidence.json",
     "frontend-file-summaries.txt",
     "frontend-implementation-plan.json",
-    "frontend/src/App.tsx",
+    "frontend/public/assets/generated/ibazex-logo-hero.dim_400x120.png",
+    "frontend/public/assets/generated/ibazex-logo.dim_200x60.png",
+    "frontend/src/components/Footer.tsx",
     "frontend/src/components/Header.tsx",
-    "frontend/src/components/ProfileSetupDialog.tsx",
-    "frontend/src/components/admin/AdminAuthGate.tsx",
-    "frontend/src/components/admin/AdminDashboard.tsx",
-    "frontend/src/hooks/useAdminAuth.ts",
-    "frontend/src/hooks/useQueries.ts",
+    "frontend/src/components/Hero.tsx",
     "project_state.json",
     "scratch/component-selection.json",
     "spec.md",

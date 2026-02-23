@@ -1,192 +1,73 @@
 {
   "kind": "implementation_plan",
   "version": "1.0",
-  "title": "Launch social media services marketplace with admin dashboard",
+  "title": "Remove login button and replace smmourprice logo with IBAZEX logo",
   "requirements": [
     {
       "id": "REQ-1",
-      "summary": "Create Arabic RTL homepage with IBAZEX branding showcasing social media services value proposition",
+      "summary": "Remove the login button from the Header component across all pages",
       "acceptanceCriteria": [
-        "Homepage displays Arabic text with proper RTL layout",
-        "Clear branding and tagline explaining the social media services",
-        "Professional and welcoming design"
+        "Login button is no longer visible in the Header component",
+        "No authentication UI elements remain in the header",
+        "Navigation remains functional without login functionality"
       ],
       "file_operations": [
         {
-          "path": "frontend/src/components/Hero.tsx",
-          "operation": "modify",
-          "description": "Update the Hero component to use the generated logo at frontend/public/assets/generated/ibazex-logo.dim_400x400.png for branding. Ensure Arabic text with RTL layout is properly implemented, and refine the value proposition messaging to clearly communicate the marketplace for selling followers, likes, and views. Apply modern styling that reflects the digital marketing industry."
-        },
-        {
           "path": "frontend/src/components/Header.tsx",
           "operation": "modify",
-          "description": "Update the Header component to use the generated IBAZEX logo at frontend/public/assets/generated/ibazex-logo.dim_400x400.png. Ensure navigation links maintain proper Arabic RTL alignment and add authentication status indicator."
-        },
-        {
-          "path": "frontend/index.html",
-          "operation": "modify",
-          "description": "Verify RTL configuration in the HTML root element and update meta tags to reflect IBAZEX branding and social media services marketplace positioning."
+          "description": "Remove the LoginButton component and its import from the Header. Remove any authentication-related UI elements (user profile display, login/logout buttons) from the header navigation while preserving the navigation links to home, services, and admin pages. Maintain Arabic RTL layout and existing styling."
         }
       ]
     },
     {
       "id": "REQ-2",
-      "summary": "Build services page displaying social media services in table format with platform, type, price, and description",
+      "summary": "Remove the smmourprice logo from all components where it appears",
       "acceptanceCriteria": [
-        "Services displayed in a clean, easy-to-read table",
-        "Each row shows service name, price, and description",
-        "Table includes services for followers, likes, and views",
-        "Supports multiple social media platforms"
+        "All references to smmourprice logo are removed from the codebase",
+        "No smmourprice branding remains visible"
       ],
       "file_operations": [
-        {
-          "path": "frontend/src/components/ServicesPage.tsx",
-          "operation": "modify",
-          "description": "Refine the services display to show services in a more table-like format while maintaining the current card-based grid. Ensure all service details (platform, service type, price, description) are clearly visible. Update to fetch services using the backend interface method getAvailableServices."
-        },
-        {
-          "path": "frontend/src/components/ServiceCard.tsx",
-          "operation": "modify",
-          "description": "Update ServiceCard to display service information in a more structured table row format when viewed in the services page context. Ensure price display matches the backend data structure (baseUnitPriceDh field). Maintain quantity selector and order functionality."
-        }
-      ]
-    },
-    {
-      "id": "REQ-4",
-      "summary": "Create admin dashboard with Internet Identity authentication for managing services and viewing orders",
-      "acceptanceCriteria": [
-        "Admin panel requires authentication to access",
-        "Interface to view all services in a manageable format",
-        "Ability to edit prices for existing services",
-        "Ability to add new services with all required fields",
-        "Ability to toggle service availability on/off"
-      ],
-      "file_operations": [
-        {
-          "path": "frontend/src/components/admin/AdminAuthGate.tsx",
-          "operation": "modify",
-          "description": "Replace password-based authentication with Internet Identity authentication check. Use the authorization component's access control to verify admin role. Show login prompt if user is not authenticated, and access denied message if authenticated but not an admin. Verify the component's usage instructions before implementing."
-        },
-        {
-          "path": "frontend/src/components/admin/AdminDashboard.tsx",
-          "operation": "modify",
-          "description": "Update the admin dashboard to work with Internet Identity authenticated users. Ensure all admin operations are properly guarded and use the backend interface methods for data management."
-        },
-        {
-          "path": "frontend/src/components/admin/ServiceManagement.tsx",
-          "operation": "modify",
-          "description": "Update service management to use the backend interface methods addService, updateService, and updateServicePrice. Ensure the form collects all required fields (platform, serviceType, baseUnitPriceCents, baseUnitPriceDh, deliveryEstimate, description) and handles the availability toggle properly."
-        },
-        {
-          "path": "frontend/src/components/admin/OrdersTable.tsx",
-          "operation": "modify",
-          "description": "Update the orders table to use the backend interface method getAllOrders and updateOrderStatus. Ensure order data including cart items and total amount are properly displayed with Arabic text and RTL layout."
-        },
-        {
-          "path": "frontend/src/components/admin/DashboardOverview.tsx",
-          "operation": "modify",
-          "description": "Update dashboard overview metrics to calculate revenue correctly using the Order data structure from the backend interface, which includes totalAmount field. Ensure all metrics display properly in Arabic with RTL layout."
-        },
-        {
-          "path": "frontend/src/hooks/useAdminAuth.ts",
-          "operation": "delete",
-          "description": "Remove the password-based authentication hook as it will be replaced by Internet Identity authentication through the authorization component."
-        }
-      ]
-    },
-    {
-      "id": "REQ-5",
-      "summary": "Implement customer order system allowing users to place orders with contact details, service selection, and quantity",
-      "acceptanceCriteria": [
-        "Order form collects customer name and contact information",
-        "Users can select service and specify quantity",
-        "Orders stored in backend with status tracking",
-        "Admin can view all orders in dashboard"
-      ],
-      "file_operations": [
-        {
-          "path": "frontend/src/components/ServiceCard.tsx",
-          "operation": "modify",
-          "description": "Update the order dialog to use the backend interface method placeOrder with the CartItem structure. Ensure the order form collects customerName, contactInfo, and cart items array. Remove or update WhatsApp integration to work alongside proper backend order storage."
-        },
-        {
-          "path": "frontend/src/hooks/useQueries.ts",
-          "operation": "modify",
-          "description": "Add or update the usePlaceOrder mutation hook to properly call the backend placeOrder method with customerName, contactInfo, and cartItems array matching the backend interface signature."
-        },
-        {
-          "path": "frontend/src/components/OrderSuccess.tsx",
-          "operation": "create",
-          "description": "Create an order success page component that displays confirmation message in Arabic after a user successfully places an order. Include order ID and next steps information."
-        },
-        {
-          "path": "frontend/src/App.tsx",
-          "operation": "modify",
-          "description": "Add a route for the OrderSuccess page and ensure proper navigation flow after order placement. Maintain existing routes for home, services, and admin dashboard."
-        }
-      ]
-    },
-    {
-      "id": "REQ-6",
-      "summary": "Integrate Internet Identity authentication system for secure user and admin access",
-      "acceptanceCriteria": [
-        "Users can authenticate using Internet Identity",
-        "Authentication state persisted across sessions",
-        "Protected routes require authentication",
-        "Admin features restricted to authenticated admin users"
-      ],
-      "file_operations": [
-        {
-          "path": "frontend/src/hooks/useInternetIdentity.ts",
-          "operation": "modify",
-          "description": "Verify and update the Internet Identity hook to ensure proper authentication flow, delegation handling, and session persistence. The authorization component requires this hook to function properly."
-        },
         {
           "path": "frontend/src/components/Header.tsx",
           "operation": "modify",
-          "description": "Add a login/logout button using Internet Identity. Display user authentication status and show the user's name from their profile. Include a profile setup prompt for first-time users. Verify the authorization component's usage instructions before implementing."
+          "description": "Remove all references to the smmourprice logo image (generated/smm-ourprice-logo.dim_400x400.png) from the Header component. Remove the logo img element and any associated links or wrappers."
         },
         {
-          "path": "frontend/src/hooks/useQueries.ts",
+          "path": "frontend/src/components/Hero.tsx",
           "operation": "modify",
-          "description": "Add query hooks for user profile management: useGetCallerUserProfile (to fetch current user profile), useSaveCallerUserProfile (to save user profile), and useGetCallerUserRole (to check admin status). Follow the authorization component's usage patterns for preventing profile setup modal flash."
-        },
-        {
-          "path": "frontend/src/components/ProfileSetupDialog.tsx",
-          "operation": "create",
-          "description": "Create a dialog component that prompts authenticated users without a profile to enter their name. Use the authorization component's profile setup patterns to prevent modal flash. Show this dialog when isAuthenticated && !profileLoading && isFetched && userProfile === null."
-        },
-        {
-          "path": "frontend/src/App.tsx",
-          "operation": "modify",
-          "description": "Wrap the application with proper authentication context and add ProfileSetupDialog to the root layout. Ensure the admin route is protected by checking both authentication status and admin role. Clear query cache on logout."
-        }
-      ]
-    },
-    {
-      "id": "REQ-7",
-      "summary": "Apply creative, modern, professional design theme reflecting digital marketing industry with cohesive styling",
-      "acceptanceCriteria": [
-        "Consistent color scheme used across all pages",
-        "Professional typography suitable for Arabic text",
-        "Modern layout with appropriate spacing and visual hierarchy",
-        "Design reflects digital marketing industry aesthetic"
-      ],
-      "file_operations": [
-        {
-          "path": "frontend/src/index.css",
-          "operation": "modify",
-          "description": "Update the global CSS to define a cohesive color palette that reflects the digital marketing and social media industry. Enhance typography settings for Arabic text readability. Add custom animations and transitions that create a modern, professional feel. Ensure RTL layout support is comprehensive."
-        },
-        {
-          "path": "frontend/tailwind.config.js",
-          "operation": "modify",
-          "description": "Configure Tailwind with a custom color scheme suitable for a social media services marketplace. Define colors that evoke digital marketing (vibrant blues, purples, greens). Add custom spacing, typography, and component utilities that will be used consistently throughout the application."
+          "description": "Remove all references to the smmourprice logo image (generated/smm-ourprice-logo.dim_400x400.png) from the Hero component. Remove the animated logo display and any associated styling or animation classes."
         },
         {
           "path": "frontend/src/components/Footer.tsx",
           "operation": "modify",
-          "description": "Update footer styling to match the new design system with consistent colors, typography, and spacing. Ensure all text remains in Arabic with proper RTL layout and the footer reflects the professional digital marketing aesthetic."
+          "description": "Remove all references to the smmourprice logo image (generated/smm-ourprice-logo.dim_400x400.png) from the Footer component. Remove the logo img element from the IBAZEX branding section."
+        }
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "summary": "Add IBAZEX logo in place of the removed smmourprice logo in Header, Hero, and Footer components",
+      "acceptanceCriteria": [
+        "IBAZEX logo displays in the Header component",
+        "IBAZEX logo displays in the Hero section",
+        "IBAZEX logo displays in the Footer component",
+        "Logo styling is consistent with the existing design"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/Header.tsx",
+          "operation": "modify",
+          "description": "Add the IBAZEX logo using the generated image at frontend/public/assets/generated/ibazex-logo.dim_200x60.png in the Header component. Position the logo appropriately for navigation bar usage, maintaining the existing header layout and Arabic RTL support. Apply appropriate sizing and styling to match the header design."
+        },
+        {
+          "path": "frontend/src/components/Hero.tsx",
+          "operation": "modify",
+          "description": "Add the IBAZEX logo using the generated image at frontend/public/assets/generated/ibazex-logo-hero.dim_400x120.png in the Hero section. Position the logo prominently in the hero area with appropriate sizing and animations that match the existing hero design. Maintain the transparent background support and ensure the logo is visually prominent."
+        },
+        {
+          "path": "frontend/src/components/Footer.tsx",
+          "operation": "modify",
+          "description": "Add the IBAZEX logo using the generated image at frontend/public/assets/generated/ibazex-logo.dim_200x60.png in the Footer component's branding section. Style the logo consistently with the footer design and ensure it displays properly with the Arabic RTL layout."
         }
       ]
     }

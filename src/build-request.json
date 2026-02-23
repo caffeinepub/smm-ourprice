@@ -1,139 +1,81 @@
 {
   "kind": "build_request",
-  "title": "Launch social media services marketplace with admin dashboard",
-  "projectName": "IBAZEX Store",
+  "title": "Remove login button and replace smmourprice logo with IBAZEX logo",
+  "projectName": "IBAZEX",
   "priority": "normal",
   "requirements": [
     {
       "id": "REQ-1",
-      "text": "Create a homepage in Arabic (RTL layout) with branding for IBAZEX social media services marketplace, showcasing the value proposition of selling followers, likes, and views for social media platforms",
+      "text": "Remove the login button from the Header component across all pages",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-1",
-          "msg-2",
-          "msg-3"
+          "msg-5",
+          "msg-7"
+        ],
+        "quotes": [
+          "حذف زر تسجيل الدخول",
+          "من جميع الصفحات"
         ]
       },
       "acceptanceCriteria": [
-        "Homepage displays Arabic text with proper RTL layout",
-        "Clear branding and tagline explaining the social media services",
-        "Professional and welcoming design"
+        "Login button is no longer visible in the Header component",
+        "No authentication UI elements remain in the header",
+        "Navigation remains functional without login functionality"
       ]
     },
     {
       "id": "REQ-2",
-      "text": "Build a services page displaying available social media services (followers, likes, views) for different platforms (Facebook, Instagram, YouTube, TikTok) in a simple table format with service name, price, and description columns",
+      "text": "Remove the smmourprice logo from all components where it appears",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-4",
-          "msg-5"
+          "msg-9"
+        ],
+        "quotes": [
+          "أحذف لوغو smmourprice"
         ]
       },
       "acceptanceCriteria": [
-        "Services displayed in a clean, easy-to-read table",
-        "Each row shows service name, price, and description",
-        "Table includes services for followers, likes, and views",
-        "Supports multiple social media platforms"
+        "All references to smmourprice logo are removed from the codebase",
+        "No smmourprice branding remains visible"
       ]
     },
     {
       "id": "REQ-3",
-      "text": "Implement backend data model and API endpoints for services with fields including platform (Facebook/Instagram/YouTube/TikTok), service type (followers/likes/views), price, description, and availability status",
-      "target": "backend",
-      "source": {
-        "messageIds": [
-          "msg-4",
-          "msg-5"
-        ]
-      },
-      "acceptanceCriteria": [
-        "Services stored with platform, type, price, description fields",
-        "API endpoints to fetch all services",
-        "API endpoints to add, update, and delete services",
-        "Services can be marked as available or unavailable"
-      ]
-    },
-    {
-      "id": "REQ-4",
-      "text": "Create an admin dashboard with authentication that allows editing service prices, adding new services, and managing service availability",
-      "target": "both",
-      "source": {
-        "messageIds": [
-          "msg-6"
-        ]
-      },
-      "acceptanceCriteria": [
-        "Admin panel requires authentication to access",
-        "Interface to view all services in a manageable format",
-        "Ability to edit prices for existing services",
-        "Ability to add new services with all required fields",
-        "Ability to toggle service availability on/off"
-      ]
-    },
-    {
-      "id": "REQ-5",
-      "text": "Implement customer order system allowing users to place orders for services with fields for customer details (name, contact), selected service, quantity, and any additional information",
-      "target": "both",
-      "source": {
-        "messageIds": [
-          "msg-7"
-        ]
-      },
-      "acceptanceCriteria": [
-        "Order form collects customer name and contact information",
-        "Users can select service and specify quantity",
-        "Orders stored in backend with status tracking",
-        "Admin can view all orders in dashboard"
-      ]
-    },
-    {
-      "id": "REQ-6",
-      "text": "Integrate Internet Identity authentication system for secure user and admin access",
-      "target": "both",
-      "source": {
-        "messageIds": [
-          "msg-7"
-        ]
-      },
-      "acceptanceCriteria": [
-        "Users can authenticate using Internet Identity",
-        "Authentication state persisted across sessions",
-        "Protected routes require authentication",
-        "Admin features restricted to authenticated admin users"
-      ]
-    },
-    {
-      "id": "REQ-7",
-      "text": "Apply a creative, modern, and professional visual design theme with a distinct style that reflects the digital marketing and social media industry, using a cohesive color palette, typography, and layout patterns consistently throughout the application",
+      "text": "Add IBAZEX logo in place of the removed smmourprice logo in Header, Hero, and Footer components",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-7"
+          "msg-9"
+        ],
+        "quotes": [
+          "واضف مكانه لوغو IBAZEX"
         ]
       },
       "acceptanceCriteria": [
-        "Consistent color scheme used across all pages",
-        "Professional typography suitable for Arabic text",
-        "Modern layout with appropriate spacing and visual hierarchy",
-        "Design reflects digital marketing industry aesthetic"
+        "IBAZEX logo displays in the Header component",
+        "IBAZEX logo displays in the Hero section",
+        "IBAZEX logo displays in the Footer component",
+        "Logo styling is consistent with the existing design"
       ]
     }
   ],
   "constraints": [
-    "All user-facing text must be in Arabic with RTL layout support",
-    "Use Internet Identity for authentication (no custom password systems)",
-    "Backend must use single-actor Motoko architecture"
+    "Do not modify backend authentication logic",
+    "Preserve all existing service functionality",
+    "Maintain Arabic RTL layout"
   ],
   "nonGoals": [
-    "Integration with actual social media platform APIs",
-    "Automated fulfillment of orders",
-    "Payment processing system",
-    "Multi-language support beyond Arabic"
+    "Removing Internet Identity integration from the backend",
+    "Changing the admin authentication system",
+    "Modifying service management features"
   ],
   "imageRequirements": {
-    "required": [],
+    "required": [
+      "IBAZEX brand logo with modern design suitable for header navigation (ibazex-logo.dim_200x60.png)",
+      "IBAZEX brand logo larger version for hero section with transparent background (ibazex-logo-hero.dim_400x120.png)"
+    ],
     "edits": []
   }
 }
