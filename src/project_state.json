@@ -1,44 +1,22 @@
 {
   "schemaVersion": "1.0.0",
   "projectStateVersion": 3,
-  "summary": "Arabic website with services table, pricing, and IBAZEX branding (login removed)",
-  "architectural_notes": [
-    "IBAZEX logo replaces smmourprice logo",
-    "No login/authentication system - all features are public",
-    "Arabic language interface",
-    "Services and pricing table display"
-  ],
+  "summary": "New project",
+  "architectural_notes": [],
   "known_issues": [],
   "isFixRequest": false,
-  "imageRequirements": "## Required Images\n- IBAZEX brand logo with modern design suitable for header navigation (ibazex-logo.dim_200x60.png)\n- IBAZEX brand logo larger version for hero section with transparent background (ibazex-logo-hero.dim_400x120.png)",
   "existing_features": [
     {
-      "id": "feature-remove-the-login-button-from-the-header-component-across-all-pages",
-      "title": "Remove the login button from the Header component across all pages",
+      "id": "feature-remove-the-image-element-located-at-xpath-html-1-body-1-div-1-div-1-main-1-div-1-div-2-div-1-div-1-img-1-from-the-hero-component",
+      "title": "Remove the image element located at XPath /html[1]/body[1]/div[1]/div[1]/main[1]/div[1]/div[2]/div[1]/div[1]/img[1] from the Hero component",
       "reqIds": [
         "REQ-1"
-      ],
-      "version": 1
-    },
-    {
-      "id": "feature-remove-the-smmourprice-logo-from-all-components-where-it-appears",
-      "title": "Remove the smmourprice logo from all components where it appears",
-      "reqIds": [
-        "REQ-2"
-      ],
-      "version": 1
-    },
-    {
-      "id": "feature-add-ibazex-logo-in-place-of-the-removed-smmourprice-logo-in-header-hero-and-footer-components",
-      "title": "Add IBAZEX logo in place of the removed smmourprice logo in Header, Hero, and Footer components",
-      "reqIds": [
-        "REQ-3"
       ],
       "version": 1
     }
   ],
   "new_feature_requests": [],
-  "projectName": "IBAZEX",
+  "projectName": "Remove hero section image from homepage",
   "clarification_mode": "instant",
   "clarification_rounds": 0
 }

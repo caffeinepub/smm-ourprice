@@ -1,73 +1,21 @@
 {
   "kind": "implementation_plan",
   "version": "1.0",
-  "title": "Remove login button and replace smmourprice logo with IBAZEX logo",
+  "title": "Remove hero section image from homepage",
   "requirements": [
     {
       "id": "REQ-1",
-      "summary": "Remove the login button from the Header component across all pages",
+      "summary": "Remove the image element from the Hero component while preserving all other functionality and content",
       "acceptanceCriteria": [
-        "Login button is no longer visible in the Header component",
-        "No authentication UI elements remain in the header",
-        "Navigation remains functional without login functionality"
+        "The image element at the specified XPath is no longer rendered in the Hero component",
+        "The Hero component layout adjusts gracefully without the removed image",
+        "No broken image references or console errors occur"
       ],
       "file_operations": [
-        {
-          "path": "frontend/src/components/Header.tsx",
-          "operation": "modify",
-          "description": "Remove the LoginButton component and its import from the Header. Remove any authentication-related UI elements (user profile display, login/logout buttons) from the header navigation while preserving the navigation links to home, services, and admin pages. Maintain Arabic RTL layout and existing styling."
-        }
-      ]
-    },
-    {
-      "id": "REQ-2",
-      "summary": "Remove the smmourprice logo from all components where it appears",
-      "acceptanceCriteria": [
-        "All references to smmourprice logo are removed from the codebase",
-        "No smmourprice branding remains visible"
-      ],
-      "file_operations": [
-        {
-          "path": "frontend/src/components/Header.tsx",
-          "operation": "modify",
-          "description": "Remove all references to the smmourprice logo image (generated/smm-ourprice-logo.dim_400x400.png) from the Header component. Remove the logo img element and any associated links or wrappers."
-        },
         {
           "path": "frontend/src/components/Hero.tsx",
           "operation": "modify",
-          "description": "Remove all references to the smmourprice logo image (generated/smm-ourprice-logo.dim_400x400.png) from the Hero component. Remove the animated logo display and any associated styling or animation classes."
-        },
-        {
-          "path": "frontend/src/components/Footer.tsx",
-          "operation": "modify",
-          "description": "Remove all references to the smmourprice logo image (generated/smm-ourprice-logo.dim_400x400.png) from the Footer component. Remove the logo img element from the IBAZEX branding section."
-        }
-      ]
-    },
-    {
-      "id": "REQ-3",
-      "summary": "Add IBAZEX logo in place of the removed smmourprice logo in Header, Hero, and Footer components",
-      "acceptanceCriteria": [
-        "IBAZEX logo displays in the Header component",
-        "IBAZEX logo displays in the Hero section",
-        "IBAZEX logo displays in the Footer component",
-        "Logo styling is consistent with the existing design"
-      ],
-      "file_operations": [
-        {
-          "path": "frontend/src/components/Header.tsx",
-          "operation": "modify",
-          "description": "Add the IBAZEX logo using the generated image at frontend/public/assets/generated/ibazex-logo.dim_200x60.png in the Header component. Position the logo appropriately for navigation bar usage, maintaining the existing header layout and Arabic RTL support. Apply appropriate sizing and styling to match the header design."
-        },
-        {
-          "path": "frontend/src/components/Hero.tsx",
-          "operation": "modify",
-          "description": "Add the IBAZEX logo using the generated image at frontend/public/assets/generated/ibazex-logo-hero.dim_400x120.png in the Hero section. Position the logo prominently in the hero area with appropriate sizing and animations that match the existing hero design. Maintain the transparent background support and ensure the logo is visually prominent."
-        },
-        {
-          "path": "frontend/src/components/Footer.tsx",
-          "operation": "modify",
-          "description": "Add the IBAZEX logo using the generated image at frontend/public/assets/generated/ibazex-logo.dim_200x60.png in the Footer component's branding section. Style the logo consistently with the footer design and ensure it displays properly with the Arabic RTL layout."
+          "description": "Remove the image element (likely an <img> tag) that displays the hero background or logo image. Adjust the component's JSX structure to remove the image container div and its child img element. Ensure the remaining content (IBAZEX logo text, Arabic tagline, WhatsApp contact info, and feature cards) maintains proper layout and spacing without the image. Verify that no image-related props, imports, or className references remain that would cause console errors."
         }
       ]
     }

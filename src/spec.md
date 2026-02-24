@@ -1,11 +1,10 @@
 # Specification
 
 ## Summary
-**Goal:** Remove login button and replace smmourprice branding with IBAZEX logo across the application.
+**Goal:** Remove the hero section image from the homepage.
 
 **Planned changes:**
-- Remove login button from Header component
-- Remove all smmourprice logo references
-- Add IBAZEX logo to Header, Hero, and Footer components
+- Remove the image element from the Hero component
+- Adjust Hero component layout to accommodate the removed image
 
-**User-visible outcome:** The application displays IBAZEX branding instead of smmourprice, and the login button is no longer visible in the header.
+**User-visible outcome:** The homepage hero section will display without an image, showing only text content.

@@ -23,15 +23,6 @@ export default function Hero() {
         {/* Content */}
         <div className="container relative z-10 flex min-h-[calc(100vh-4rem)] flex-col items-center justify-center px-4 py-16 text-center">
           <div className="max-w-4xl space-y-8">
-            {/* Logo */}
-            <div className="flex justify-center">
-              <img
-                src="/assets/generated/ibazex-logo-hero.dim_400x120.png"
-                alt="IBAZEX"
-                className="h-32 w-auto animate-in fade-in zoom-in duration-500"
-              />
-            </div>
-
             {/* Heading */}
             <h1 className="animate-in fade-in slide-in-from-bottom-4 text-5xl font-black tracking-tight duration-700 sm:text-6xl md:text-7xl">
               <span className="bg-gradient-to-r from-cyan-400 to-cyan-600 bg-clip-text text-transparent">

@@ -1,81 +1,39 @@
 {
   "kind": "build_request",
-  "title": "Remove login button and replace smmourprice logo with IBAZEX logo",
-  "projectName": "IBAZEX",
+  "title": "Remove hero section image from homepage",
   "priority": "normal",
   "requirements": [
     {
       "id": "REQ-1",
-      "text": "Remove the login button from the Header component across all pages",
+      "text": "Remove the image element located at XPath /html[1]/body[1]/div[1]/div[1]/main[1]/div[1]/div[2]/div[1]/div[1]/img[1] from the Hero component",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-5",
-          "msg-7"
+          "msg-last"
         ],
         "quotes": [
-          "حذف زر تسجيل الدخول",
-          "من جميع الصفحات"
+          "احذف",
+          "من هذه الصفحه"
         ]
       },
       "acceptanceCriteria": [
-        "Login button is no longer visible in the Header component",
-        "No authentication UI elements remain in the header",
-        "Navigation remains functional without login functionality"
-      ]
-    },
-    {
-      "id": "REQ-2",
-      "text": "Remove the smmourprice logo from all components where it appears",
-      "target": "frontend",
-      "source": {
-        "messageIds": [
-          "msg-9"
-        ],
-        "quotes": [
-          "أحذف لوغو smmourprice"
-        ]
-      },
-      "acceptanceCriteria": [
-        "All references to smmourprice logo are removed from the codebase",
-        "No smmourprice branding remains visible"
-      ]
-    },
-    {
-      "id": "REQ-3",
-      "text": "Add IBAZEX logo in place of the removed smmourprice logo in Header, Hero, and Footer components",
-      "target": "frontend",
-      "source": {
-        "messageIds": [
-          "msg-9"
-        ],
-        "quotes": [
-          "واضف مكانه لوغو IBAZEX"
-        ]
-      },
-      "acceptanceCriteria": [
-        "IBAZEX logo displays in the Header component",
-        "IBAZEX logo displays in the Hero section",
-        "IBAZEX logo displays in the Footer component",
-        "Logo styling is consistent with the existing design"
+        "The image element at the specified XPath is no longer rendered in the Hero component",
+        "The Hero component layout adjusts gracefully without the removed image",
+        "No broken image references or console errors occur"
       ]
     }
   ],
   "constraints": [
-    "Do not modify backend authentication logic",
-    "Preserve all existing service functionality",
-    "Maintain Arabic RTL layout"
+    "Only remove the image from the Hero component, do not delete the actual image file from the project",
+    "Preserve all other Hero component functionality and content"
   ],
   "nonGoals": [
-    "Removing Internet Identity integration from the backend",
-    "Changing the admin authentication system",
-    "Modifying service management features"
+    "Deleting the image file from the project assets",
+    "Removing images from other pages or components",
+    "Changing the Hero component's overall layout or styling beyond accommodating the removed image"
   ],
   "imageRequirements": {
-    "required": [
-      "IBAZEX brand logo with modern design suitable for header navigation (ibazex-logo.dim_200x60.png)",
-      "IBAZEX brand logo larger version for hero section with transparent background (ibazex-logo-hero.dim_400x120.png)"
-    ],
+    "required": [],
     "edits": []
   }
 }

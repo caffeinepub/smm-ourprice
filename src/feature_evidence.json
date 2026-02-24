@@ -2,10 +2,10 @@
   "kind": "feature_evidence_report",
   "features": [
     {
-      "featureId": "feature-remove-the-login-button-from-the-header-component-across-all-pages",
-      "featureTitle": "Remove the login button from the Header component across all pages",
+      "featureId": "feature-remove-the-image-element-located-at-xpath-html-1-body-1-div-1-div-1-main-1-div-1-div-2-div-1-div-1-img-1-from-the-hero-component",
+      "featureTitle": "Remove the image element located at XPath /html[1]/body[1]/div[1]/div[1]/main[1]/div[1]/div[2]/div[1]/div[1]/img[1] from the Hero component",
       "files": [
-        "frontend/src/components/Header.tsx"
+        "frontend/src/components/Hero.tsx"
       ],
       "components": [
         "core-infrastructure@1.0.2",
@@ -17,48 +17,6 @@
       ],
       "testIds": [
         "REQ-1"
-      ],
-      "confidence": "high"
-    },
-    {
-      "featureId": "feature-remove-the-smmourprice-logo-from-all-components-where-it-appears",
-      "featureTitle": "Remove the smmourprice logo from all components where it appears",
-      "files": [
-        "frontend/src/components/Footer.tsx",
-        "frontend/src/components/Header.tsx",
-        "frontend/src/components/Hero.tsx"
-      ],
-      "components": [
-        "core-infrastructure@1.0.2",
-        "shadcn-ui@1.0.0",
-        "build-template-react@1.0.0",
-        "initial-app@1.0.0",
-        "github-export-icp-cli@1.0.0",
-        "authorization@4.0.0"
-      ],
-      "testIds": [
-        "REQ-2"
-      ],
-      "confidence": "high"
-    },
-    {
-      "featureId": "feature-add-ibazex-logo-in-place-of-the-removed-smmourprice-logo-in-header-hero-and-footer-components",
-      "featureTitle": "Add IBAZEX logo in place of the removed smmourprice logo in Header, Hero, and Footer components",
-      "files": [
-        "frontend/src/components/Footer.tsx",
-        "frontend/src/components/Header.tsx",
-        "frontend/src/components/Hero.tsx"
-      ],
-      "components": [
-        "core-infrastructure@1.0.2",
-        "shadcn-ui@1.0.0",
-        "build-template-react@1.0.0",
-        "initial-app@1.0.0",
-        "github-export-icp-cli@1.0.0",
-        "authorization@4.0.0"
-      ],
-      "testIds": [
-        "REQ-3"
       ],
       "confidence": "high"
     }
